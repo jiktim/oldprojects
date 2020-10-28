@@ -1,0 +1,20 @@
+<script src="/static/main/members.js"></script>
+<% function showMember(member) {
+    if(project.owner.id === member.id) return `<div id="${member.id}">
+      <p id="name">${member.username} <select id="role" disabled>
+          <option>Owner</option>
+        </select></p>
+    </div>`;
+    else return `<div id="${member.id}"><p id="name">${member.username} <select id="role"${member.id === user.id ? " disabled" : ""}>
+      <option${member.role=="Manager" ? " selected" : "" }>Manager</option>
+        <option${member.role=="Administrator" ? " selected" : "" }>Administrator</option>
+        <option ${member.role=="Member" ? " selected" : "" }>Member</option>
+      </select></p></div>`
+} %>
+<div id="memberlist">
+  <%- showMember(project.owner) %>
+  <% if(project.members) { %>
+  <% for(let i = 0; i < project.members.length; i++) { let member = project.members[i] %>
+  <%- showMember(member) %>
+  <% }} %>
+</div>
