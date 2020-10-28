@@ -1,0 +1,108 @@
+<!-- Creation modal -->
+<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">New Project</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <div class="modal-card-body">
+      <p>Project Name</p>
+      <input class="input has-text-black" type="text" id="project-name">
+      <br><br>
+      <!-- File upload -->
+      <p>Project Icon</p>
+      <div class="file has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" name="file" id="project-logo">
+          <span class="file-cta">
+            <span class="file-icon"><i class="fas fa-upload"></i></span>
+            <span class="file-label">Upload</span>
+          </span>
+          <span class="file-name" style="margin-right: 10px;">No file selected</span>
+        </label>
+      </div>
+      <br>
+      <!-- Icon preview -->
+      <figure class="image is-128x128" style="display:none">
+        <img class="is-rounded is-1by1" id="logo-preview" alt="Logo">
+      </figure>
+      <br>
+      <!-- Button -->
+      <div class="field has-addons">
+        <p class="control">
+          <button class="button is-link" id="confirm">
+            <span class="icon is-small"><i class="fas fa-check"></i></span>
+            <span>Create</span>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button" id="" onclick="document.querySelector('#modal > div.modal-card > header > button').click()">
+            <span class="icon is-small"><i class="fas fa-times-circle"></i></span>
+            <span>Cancel</span>
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Deletion modal -->
+<div class="modal" id="deletemodal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Are you sure you'd like to delete this project?</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <div class="modal-card-body">
+      <p class="is-size-5">Enter project name to confirm.</p>
+      <input class="input has-text-black" type="text" id="project-name-delete">
+      <br>
+      <br>
+      <div class="field has-addons">
+        <p class="control">
+          <button class="button is-danger" id="confirm-delete" disabled>
+            <span class="icon is-small"><i class="fas fa-trash"></i></span>
+            <span>Delete</span>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button" onclick="document.querySelector('#deletemodal > div.modal-card > header > button').click()">
+            <span class="icon is-small"><i class="fas fa-times-circle"></i></span>
+            <span>Cancel</span>
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Modal functionality
+document.querySelectorAll(".modal-button").forEach(function(el) {
+  let target = document.querySelector(el.getAttribute("data-target"));
+  let keyfunc = (key) => {
+    if (key.key === "Escape") target.querySelector(".delete").click();
+    if (key.key === "Enter") target.querySelector("#confirm").click();
+  }
+  document.addEventListener("keydown", keyfunc);
+  el.addEventListener("click", function() {
+    target.classList.add("is-active");
+    target.querySelector(".delete").addEventListener("click", function() {
+      target.classList.remove("is-active");
+      document.removeEventListener("keydown", keyfunc);
+    });
+  });
+});
+
+// Fineinput functionality 
+const fileInput = document.getElementById("project-logo");
+fileInput.onchange = () => {
+  if (fileInput.files.length > 0) {
+    const fileName = document.getElementsByClassName("file-name")[0];
+    fileName.textContent = fileInput.files[0].name;
+  }
+}
+
+</script>

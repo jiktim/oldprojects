@@ -1,0 +1,21 @@
+<head>
+  <%- include("../partials/head.ejs") %>
+  <link rel="stylesheet" href="/static/css/manage.css">
+  <script src="/static/sidebar.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <title>Echo - <%= project.name %></title>
+</head>
+
+<body>
+  <%- include("../partials/sidebar.ejs") %>
+  <%# Adds onto the content from the sidebar %>
+  <div id="content" class="column">
+    <section class="section content">
+      <p class="title is-size-4">Welcome to Echo!</p>
+      <p class="subtitle is-size-5"></p>
+    </section>
+  </div>
+  <input hidden id="projectid" projectid="<%=project.id%>">
+  <%# Closes the final div in sidebar %>
+  </div>
+</body>

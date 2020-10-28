@@ -1,0 +1,31 @@
+/* General Styling */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Layout Styling */
+
+.head {
+  background: #202020 !important;
+  height: 20vh;
+  padding-left: 1.5em;
+  padding-top: 1.5em;
+}
+
+.item:hover {
+  background: #3b3b3b !important;
+}
+
+.sidebar {
+  background: #2c2c2c !important;
+  height: 100vh;
+  max-width: 15em;
+  padding-left: 1.5em;
+  padding-top: 1.5em;
+}
+
+.sticky {
+  position: sticky;
+  top: 30px;
+}

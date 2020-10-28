@@ -1,0 +1,85 @@
+<head>
+  <%- include("../partials/head.ejs") %>
+  <link rel="stylesheet" href="../static/css/projects.css">
+  <script src="/static/projects.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <title>Projects - Echo</title>
+</head>
+
+<body>
+  <div class="spacing"></div>
+  <section class="container section">
+    <div class="columns is-desktop is-vcentered is-centered">
+      <div class="column is-narrow">
+        <figure class="image is-128x128">
+          <%# Shows the user's Discord avatar or falls back to a dummy image %>
+          <img src=<%= user.avatar %> class="is-rounded" alt="Avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+        </figure>
+      </div>
+      <div class="column is-narrow">
+        <p class="title is-size-4 has-text-white" style="margin-bottom: 18px;">Welcome, <b><%= user.username %></b>.</p>
+        <p class="subtitle is-size-5 has-text-white" style="margin-bottom: 0px;">Manage your Echo projects here.</p>
+        <div class="links is-size-5">
+          <a class="has-text-link modal-button" data-target="#modal" aria-haspopup="true"> <i class="fas fa-plus"></i> Create </a> &nbsp;
+          <a onclick="$('#projectlist').load('/projects #projectlist_')" class="has-text-info"> <i class="fas fa-sync-alt"></i> Refresh </a> &nbsp;
+          <a href="/logout/" class="has-text-danger"> <i class="fas fa-power-off"></i> Logout </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%# Modal Functionality %>
+  <%- include("../partials/modals.ejs") %>
+
+  <%# Displays if the user can't manage any projects %>
+  <% if (!projects || !projects[0]) { %>
+  <div class="none">
+    <section class="container" id="projectlist">
+      <div class="box has-text-centered" style="background: rgba(255, 255, 255, 0.164);">
+        <i class="fas fa-exclamation-triangle fa-3x has-text-warning"></i>
+        <p class="is-size-5 has-text-white">You don't have any projects. Create one first.</p>
+      </div>
+    </section>
+  </div>
+  <%# Shows projects the user can manage %>
+  <% } else { %>
+  <section class="container" id="projectlist">
+    <div id="projectlist_" class="list is-hoverable has-text-left">
+      <% for (let i = 0; i < projects.length; i++) { %>
+      <a class="media" href="/project/<%= projects[i].owner.id %>/<%= projects[i].name %>">
+        <div class="list-item">
+          <div class="columns is-vcentered is-centered">
+            <div class="column">
+              <div class="media-left">
+                <%# Shows the project logo if applicable %>
+                <% if (projects[i].logo) { %>
+                <figure class="image is-48x48 is-1by1">
+                  <img src="<%=projects[i].logo%>" class="is-rounded" alt="Project Icon">
+                </figure>
+                <% } else { %>
+                <%# Falls back to a dummy image %>
+                <figure class="image is-48x48 is-1by1">
+                  <img src="https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png" class="is-rounded" alt="No Project Icon">
+                </figure>
+                <% } %>
+              </div>
+            </div>
+            <div class="media-content">
+              <div class="column">
+                <span class="is-size-5 has-text-white"><%= `${projects[i].name}${projects[i].suffix ? projects[i].suffix : ""}` %></span>
+                <% if(projects[i].owner.id === user.id) { %>
+                <%# Delete button %>
+                <span><a id="<%=projects[i].id%>" name="<%=projects[i].name%>" onclick="deleteModal(this.id, this.name)" class="has-text-danger"><i class="fas fa-trash"></i> Delete </a></span>
+                <% } else { %>
+                <span><a id="<%=projects[i].id%>" name="<%=projects[i].name%>" onclick="deleteModal(this.id, this.name, true)" class="has-text-danger"> Leave </a></span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <% } %>
+    </div>
+    <% } %>
+  </section>
+</body>

@@ -41,6 +41,7 @@ Ram: The succesor to Chi's Hibiki in October 2018. Killed off due to lack of int
 ### Libraries & Utilities
 Libraries of software or general utilities.
   - catutils
+  - Echo (v1)
   - licenser
   - njs-fetch
 

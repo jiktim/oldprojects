@@ -1,0 +1,11 @@
+<script src="/static/main/invites.js"></script>
+<% for(let i = 0; i < invites.length; i++) { %>
+<p><%= `${invites[i].label}: localhost:6969/invite/${invites[i].id} uses: ${invites[i].uses}, expiration: ${((invites[i].expiration - new Date().getTime()) / 86400000).toFixed(1)} days, role: ${invites[i].role}` %></p>
+<% } %>
+expiration(days):<input type="number" style="width: 35;" id="expiration"> uses:<input type="number" style="width: 35;" id="uses">
+role:<select id="role">
+  <option>Member</option>
+  <option>Administrator</option>
+  <option>Manager</option>
+</select>
+label:<input type="text" id="label"> <button id="create">create invite</button>
