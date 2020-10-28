@@ -63,6 +63,7 @@ Projects that mostly focus on web interfaces or websites.
 
 ### Lost Projects
 Projects that have been lost or misplaced.
+  - Shitty C# joke ransomware from early 2019
   - tBot
   - Nep (by @chiibiki)
   - Nadeshiko (by @chiibiki)
