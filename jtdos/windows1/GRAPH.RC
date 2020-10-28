@@ -1,0 +1,97 @@
+graph IT 
+BEGIN 
+#include "graph.it" 
+END 
+graph cursor graph.CUR 
+graph icon graph.ICO 
+tlbr cursor tlbr.cur 
+blur cursor blur.cur 
+lr cursor lr.cur 
+tb cursor tb.cur 
+move cursor move.cur 
+box cursor box.cur 
+MenuBar MENU 
+begin 
+popup "Gallery" 
+begin 
+menuitem "Column" ,256 ,CHECKED 
+menuitem "Bar" ,257 
+end 
+popup "Data" 
+begin 
+menuitem "Increment" ,258 
+menuitem "Decrement" ,259 
+end 
+popup "Size" 
+begin 
+menuitem "Clip" ,260 ,CHECKED 
+menuitem "Scale" ,261 
+menuitem " " ,262 ,INACTIVE 
+menuitem "Set ..." ,263 
+end 
+popup "Debug" 
+begin 
+menuitem "Debug 1" ,264 
+menuitem "Debug 2" ,265 
+menuitem "Debug 3" ,266 
+menuitem "Debug 4" ,267 
+menuitem "Debug 5" ,268 
+menuitem "Debug  ..." ,269 
+end 
+end 
+OkCancel MENU 
+begin 
+menuitem "Ok" ,256 
+menuitem "Cancel" ,257 
+end 
+IDIFIGSIZE dialog 5 ,5 ,150 ,90 
+caption "Figure Size" 
+menuname OkCancel 
+begin 
+ltext "width:" ,1 ,2 ,2 ,40 ,12 
+ltext "height:" ,2 ,2 ,17 ,40 ,12 
+ltext "x origin:" ,3 ,2 ,32 ,40 ,12 
+ltext "y origin:" ,4 ,2 ,47 ,40 ,12 
+ltext "# of bars:" ,5 ,2 ,62 ,40 ,12 
+editctl "width:" ,6 ,ELEFT ,44 ,2 ,50 ,12 
+editctl "height:" ,7 ,ELEFT ,44 ,17 ,50 ,12 
+edititem 8 ,44 ,32 ,50 ,12 
+edititem 9 ,44 ,47 ,50 ,12 
+edititem 10 ,44 ,62 ,50 ,12 
+end 
+IDIDEBUG dialog 50 ,5 ,210 ,80 
+caption "Debug Dialog" 
+menuname OkCancel 
+begin 
+ltext "t1:" ,11 ,2 ,2 ,16 ,12 
+ltext "t2:" ,12 ,2 ,17 ,16 ,12 
+ltext "t3:" ,13 ,2 ,32 ,16 ,12 
+ltext "t4:" ,14 ,2 ,47 ,16 ,12 
+ltext "t5:" ,15 ,2 ,62 ,16 ,12 
+edititem 16 ,20 ,2 ,70 ,12 
+edititem 17 ,20 ,17 ,70 ,12 
+edititem 18 ,20 ,32 ,70 ,12 
+edititem 19 ,20 ,47 ,70 ,12 
+edititem 20 ,20 ,62 ,70 ,12 
+pushbutton "pb1" ,21 ,95 ,2 ,20 ,12 
+pushbutton "pb2" ,22 ,95 ,17 ,20 ,12 
+pushbutton "pb3" ,23 ,95 ,32 ,20 ,12 
+pushbutton "pb4" ,24 ,95 ,47 ,20 ,12 
+pushbutton "pb5" ,25 ,95 ,62 ,20 ,12 
+radiobutton "rb1:" ,26 ,120 ,2 ,40 ,12 
+radiobutton "rb2:" ,27 ,120 ,17 ,40 ,12 
+radiobutton "rb3:" ,28 ,120 ,32 ,40 ,12 
+radiobutton "rb4:" ,29 ,120 ,47 ,40 ,12 
+radiobutton "rb5:" ,30 ,120 ,62 ,40 ,12 
+checkbox "cb1:" ,31 ,165 ,2 ,40 ,12 
+checkbox "cb2:" ,32 ,165 ,17 ,40 ,12 
+checkbox "cb3:" ,33 ,165 ,32 ,40 ,12 
+checkbox "cb4:" ,34 ,165 ,47 ,40 ,12 
+checkbox "cb5:" ,35 ,165 ,62 ,40 ,12 
+end 
+IDIQUIT dialog 10 ,10 ,140 ,35 
+begin 
+ltext "Destroy this window?" ,36 ,12 ,2 ,116 ,12 
+pushbutton "Yes" ,37 ,18 ,16 ,28 ,14 
+pushbutton "No" ,38 ,50 ,16 ,28 ,14 
+end 

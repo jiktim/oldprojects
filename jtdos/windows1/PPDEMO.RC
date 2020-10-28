@@ -1,0 +1,10 @@
+ppdemo  icon    ppdemo.ico
+ppdemo  cursor  normal.cur
+ppdemo  it
+BEGIN
+Options
+    StdChars
+Definitions
+    Mouse-Button1  = 256
+    MouseMove = 257 MouseCoords
+END

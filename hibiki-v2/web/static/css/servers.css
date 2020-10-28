@@ -1,0 +1,88 @@
+/* General Styling */
+
+html {
+  scroll-behavior: smooth;
+  background-size: 400% 400%;
+  -webkit-animation: gradient 6s ease infinite;
+  -moz-animation: gradient 6s ease infinite;
+  -o-animation: gradient 6s ease infinite;
+  animation: gradient 6s ease infinite;
+}
+
+/* Text Styling */
+
+.servertext {
+  padding-left: .5em;
+  font-size: 20px;
+}
+
+.subtitle {
+  color: #fff;
+  margin-bottom: 5px !important;
+}
+
+/* Layout Styling */
+
+.centered {
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.serverlist {
+  width: 50em;
+  max-width: 70em;
+}
+
+.spacer {
+  padding: 6em;
+}
+
+/* Icon & Image Styling */
+
+.avatar {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-bottom: 0.75em;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+
+/* Background Animation */
+
+@-webkit-keyframes gradient {
+  0% {
+    background: #111111;
+  }
+
+  50% {
+    background: #212525;
+  }
+
+  100% {
+    background: #111111;
+  }
+}
+
+
+@keyframes gradient {
+  0% {
+    background: #111111;
+  }
+
+  50% {
+    background: #212525;
+  }
+
+  100% {
+    background: #111111;
+  }
+}

@@ -1,0 +1,33 @@
+/* General Styling */
+
+html {
+  background-size: 400% 400%;
+  background: linear-gradient(90deg, #111 25%, #282f2f 100%);
+  scroll-behavior: smooth;
+}
+
+/* Layout Styling */
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.spacer {
+  margin: 10em;
+}
+
+/* Icon & Image Styling */
+
+.errimg {
+  width: 35%;
+  height: 35%;
+}
+
+.icons {
+  padding-right: 5px;
+}
+
+.title {
+  margin-bottom: 3px !important;
+}

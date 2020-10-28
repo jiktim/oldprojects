@@ -1,0 +1,33 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+a {
+    color: black;
+}
+h1.title {
+    text-shadow: 2px 2px white;
+    font-weight: lighter;
+    font-size: 75px;
+}
+html, body, main, .background {
+    height: 100%;
+	padding: 0;
+    width: 100%;
+    margin: 0;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+.main-content > h1 {
+    margin: 10px;
+}
+.background {
+    background-image: url("./img/806274.png");
+    background-size: cover;
+    filter: blur(6px);
+    /* opacity: 0.4; */
+    position: fixed;
+    z-index: -1
+}

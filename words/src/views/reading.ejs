@@ -1,0 +1,34 @@
+<% const converter = new showdown.Converter(); %> 
+<% try { %>
+<% let articleJSON = articles.fetchArticleJSON(parentFolder, `${article}.json`); %> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<link href="/public/css/post.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+  <a href="/"> <h2> words@jik &gt </h2> </a>
+  <a href="/"> <h3> Home </h3> </a>
+  <a> <h3> Tech </h3> </a> 
+  <a> <h3> Opinion </h3> </a> 
+  <a> <h3> For You </h3> </a> 
+</div>
+
+<div class="lower">
+  <img class="img" src="<%- JSON.parse(articleJSON).image %>">
+  <br>
+  <small><b><%= JSON.parse(articleJSON).photo_caption %></b> [<%= JSON.parse(articleJSON).photo_credit %>]</small>
+  <h1 class="headline"><%= JSON.parse(articleJSON).title %></h1>
+  <small>by <b><%= JSON.parse(articleJSON).author %></b></small>
+  <%- converter.makeHtml(articles.fetchArticleJSON(parentFolder, JSON.parse(articleJSON).article)); %>
+</div>
+</body>
+</html>
+<% } catch (e) { %>
+<%- include("404"); %>
+<% return; %>
+<% } %>

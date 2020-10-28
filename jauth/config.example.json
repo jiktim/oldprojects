@@ -1,0 +1,11 @@
+{
+  "token": "",
+  "prefix": "~",
+  "colors": {
+    "general": "#FF4A89",
+    "error": "#A60000"
+  },
+  "rethinkdb": {
+    "db": "jauth"
+  }
+}

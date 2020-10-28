@@ -1,0 +1,47 @@
+/* jMusic Player CSS */
+
+html {
+  background: #000;
+}
+
+/* sagiri eating mcdonal */
+.borgar {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* wrapper from sagiri's borgar */
+.borgar-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 550px;
+  transform: translate(-50%,-50%);
+
+}
+
+.borgar div{
+  height: 8px;
+  width: 60px;
+  background-color: #fff;
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.borgar .first{
+  top: 25px;
+  left: 20px;
+}
+
+.borgar .second{
+  top: 45px;
+  left: 20px;
+}
+
+.borgar .third{
+  top: 65px;
+  left: 20px;
+}

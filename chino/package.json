@@ -1,0 +1,32 @@
+{
+  "name": "chino",
+  "version": "v1.2.3",
+  "description": "A simple and easy-to-use Discord bot packed with moderation, utility, and fun commands.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "chino": "node index.js"
+  },
+  "keywords": [
+    "bot",
+    "eris",
+    "discord"
+  ],
+  "author": "Chino Development Team",
+  "license": "AGPL-3.0-or-later",
+  "homepage": "https://chinobot.host/",
+  "dependencies": {
+    "eris": "^0.9.0",
+    "moment": "^2.22.2",
+    "raven": "^2.6.4",
+    "rethinkdbdash": "^2.3.31",
+    "snekfetch": "^4.0.4",
+    "taihou": "^2.0.2",
+    "weather-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0"
+  }
+}

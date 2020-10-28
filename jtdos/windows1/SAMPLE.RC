@@ -1,0 +1,15 @@
+sample  it
+BEGIN
+OPTIONS
+    StdChars
+    BatchMouse
+
+DEFINITIONS
+    mouse-Button1 = MouseCoords
+    mouse-Button2 = MouseCoords
+    mouse-Button3 = MouseCoords
+    mouse-Button4 = MouseCoords
+
+END
+sample  cursor  SAMPLE.CUR
+sample  icon    SAMPLE.ICO

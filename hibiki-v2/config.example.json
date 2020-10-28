@@ -1,0 +1,46 @@
+{
+  "colours": {
+    "general": "#CE94D3",
+    "success": "#41FF70",
+    "error": "#FF0048",
+    "starboard": "#FFFF00"
+  },
+  "config": {
+    "homepage": "https://hibiki.app",
+    "logchannel": "",
+    "owners": [""],
+    "permissions": "506850534",
+    "prefix": "",
+    "shards": 1,
+    "support": "6Epm69U",
+    "provider": "rethink"
+  },
+  "token": "",
+  "abuseipdb": "",
+  "dictionary": "",
+  "gametracker": "",
+  "ipinfo": "",
+  "maps": "",
+  "osu": "",
+  "sentry": "",
+  "steam": "",
+  "topgg": "",
+  "twitter": "",
+  "weather": "",
+  "weebsh": "",
+  "youtube": "",
+  "dashboard": {
+    "cookiesecret": "",
+    "port": "",
+    "redirect_uri": "https://url:port/login/callback",
+    "secret": "",
+    "uglifycode": true
+  },
+  "rethinkDB": {
+    "db": "hibiki"
+  },
+  "votingRewards": {
+    "authorization": "",
+    "port": ""
+  }
+}

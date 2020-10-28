@@ -1,0 +1,64 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="../static/css/servers.css">
+    <script src="../static/bio.js"></script>
+    <title><%= bot.user.username %> - Servers</title>
+  </head>
+
+  <body>
+
+    <div class="spacer"></div>
+    <section class="content has-text-centered">
+      <div class="columns is-vcentered is-centered">
+        <div class="column is-narrow">
+          <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png" alt="User Avatar" class="avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+        </div>
+        <div class="column is-narrow has-text-left">
+          <p class="is-size-4 title">Welcome to the <%= bot.user.username %> dashboard, <strong><%= user.username %></strong>.</p>
+          <p class="is-size-5 subtitle" style="margin-bottom: 0px;">Select the server you'd like to configure.</p>
+          <p class="is-size-5" style="margin-bottom: 0px;">You can set your bio here.</p>
+          <input id="bio" class="input" type="text" placeholder="bio" style="width: 50%; height: 30%; color: #000;">
+          <p class="is-size-5 subtitle">
+            <a href="/login/" class="has-text-info"> <i class="fas fa-sync-alt"></i> Refresh </a> |
+            <a href="/logout/" class="has-text-danger"> <i class="fas fa-power-off"></i> Logout </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <%# Looks for guilds the user has permissions in %>
+    <% let managableguilds = user["guilds"].filter(g => (g.permissions & 32) === 32 && bot.guilds.get(g.id)); %>
+    <%# Displays if the user can't manage any guilds %>
+    <% if (!managableguilds[0]) { %>
+    <section class="container centered">
+      <div class="list is-hoverable serverlist has-text-left">
+        <a class="list-item has-text-white" href="/invite/">
+          <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="servertext">You can't manage any servers. Maybe invite <%= bot.user.username %> first? </span>
+        </a>
+      </div>
+    </section>
+    <%# Displays a list of guilds the user can manage %>
+    <% } else { %>
+    <section class="container centered">
+      <div class="list is-hoverable serverlist has-text-left">
+        <% for (let i = 0; i < managableguilds.length; i++) { %>
+        <a class="list-item has-text-white" href="/manage/<%= managableguilds[i].id %>">
+          <% if (managableguilds[i].icon) { %>
+          <img class="icon" src="https://cdn.discordapp.com/icons/<%= managableguilds[i].id %>/<%= managableguilds[i].icon %>.png" alt="Guild Icon">
+          <% } else { %>
+          <img src="https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png" alt="No Guild Icon">
+          <% } %>
+          <span class="servertext"><%= managableguilds[i].name %></span>
+        </a>
+        <% } %>
+      </div>
+      <% } %>
+    </section>
+
+  </body>
+
+  </html>

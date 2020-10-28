@@ -1,0 +1,32 @@
+{
+  "name": "jmusic",
+  "version": "0.0.1",
+  "description": "A music streaming platform - by hackers, for hackers.",
+  "author": "jiktim (https://jikt.im)",
+  "contributors": [
+    "smolespi (https://lesbian.codes)",
+    "cth103 (https://github.com/cthpw103"
+  ],
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/jiktim/jMusic",
+  "bugs": {
+    "url": "https://github.com/jiktim/jMusic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiktim/jMusic.git"
+  },
+  "scripts": {
+    "dev": "node ."
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "ejs-lint": "^1.1.0",
+    "eslint": "^6.8.0"
+  }
+}

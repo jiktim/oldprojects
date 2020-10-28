@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Editing - jikIDE</title>
+	</head>
+	<body style="margin: 0;">
+		<div id="container" style="width:200px;height:200px;"></div>
+	</body>
+
+	<script>
+	let electron = require("electron");
+	window.onload = () => {
+		let bounds = require("electron").remote.getCurrentWindow().webContents.getOwnerBrowserWindow().getBounds();
+		document.getElementById("container").style.width = `${bounds.width}px`;
+		document.getElementById("container").style.height = `${bounds.height}px`;
+	}
+	
+	window.onresize = () => {
+		let bounds = require("electron").remote.getCurrentWindow().webContents.getOwnerBrowserWindow().getBounds();
+		document.getElementById("container").style.width = `${bounds.width}px`;
+		document.getElementById("container").style.height = `${bounds.height}px`;
+		try {
+			window.editor.layout();
+		} catch (a) {
+		}
+	}
+	
+	(function() {
+		// TODO: fix ugly
+		let fixugly = "";
+		let ugly = new URL(document.location).searchParams.get("path");
+		if (ugly) {
+			fixugly = ugly.replace(/\\/g, "/").split("/").pop();
+		} else {
+			fixugly = "New File";
+		}
+		window.document.title = `Editing ${fixugly} - jikIDE`;
+		const path = require('path');
+		const amdLoader = require('../node_modules/monaco-editor/min/vs/loader.js');
+		const amdRequire = amdLoader.require;
+		const amdDefine = amdLoader.require.define;
+		function uriFromPath(_path) {
+			var pathName = path.resolve(_path).replace(/\\/g, '/');
+			if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+				pathName = '/' + pathName;
+			}
+			return encodeURI('file://' + pathName);
+		}
+		amdRequire.config({
+			baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
+		});
+		// workaround monaco-css not understanding the environment
+		self.module = undefined;
+		amdRequire(['vs/editor/editor.main'], function() {
+			let cast = require("../langs");
+			let ext = "";
+			let ruski = new URL(document.location).searchParams;
+			if (ruski.get("path")) {
+				console.log(ruski.get("path"));
+				if (cast[require('path').extname(ruski.get("path"))]) { // if undefined
+					ext = cast[require('path').extname(ruski.get("path"))].toLowerCase().replace(/ /g, "");
+				}
+			}
+			monaco.editor.setTheme("vs-dark");
+			let text2edit = "";
+			try {
+				text2edit = require("fs").readFileSync(new URL(document.location).searchParams.get("path")).toString();
+			} catch (e) {
+				text2edit = ""
+			}
+			window.editor = monaco.editor.create(document.getElementById('container'), {
+				value: text2edit,
+				language: ext
+			});
+			/* might fix some glitches with old cpus */
+		let bounds = require("electron").remote.getCurrentWindow().webContents.getOwnerBrowserWindow().getBounds();
+		document.getElementById("container").style.width = `${bounds.width}px`;
+		document.getElementById("container").style.height = `${bounds.height}px`;
+		
+		window.editor.layout();
+		});
+	})();
+	
+	</script>
+</html>

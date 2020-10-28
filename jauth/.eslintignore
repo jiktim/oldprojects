@@ -1,0 +1,3 @@
+# Prevents eslint from checking certain directories
+node_modules/*
+rethinkdb_data/*

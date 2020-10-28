@@ -1,0 +1,13 @@
+fomtdemo.dfo: fontdemo.def
+    mc fontdemo
+
+fontdemo.obj: fontdemo.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib fontdemo.c
+
+fontdemo.exe: fddef.dfo fontdemo.obj
+    link fontdemo.dfo fontdemo,fontdemo,fontdemo/map, \lib\windows \lib\gdi \lib\kernel \lib\swlibc
+    mapsym fontdemo
+    ne fontdemo
+
+fontdemo.res: fontdemo.rc fontdemo.cur fontdemo.ico
+    rc fontdemo.rc

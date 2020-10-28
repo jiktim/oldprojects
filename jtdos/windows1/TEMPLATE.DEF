@@ -1,0 +1,10 @@
+NAME    Template
+DESCRIPTION Microsoft Windows Application Template
+
+CODE    MOVEABLE
+DATA    MOVEABLE MULTIPLE
+
+HEAPSIZE    2048
+
+LOADPROC    TemplateLoad
+FREEPROC    TemplateFree

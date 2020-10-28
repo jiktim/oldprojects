@@ -1,0 +1,13 @@
+chart.dfo: chart.dfo
+    mc chart
+
+chart.obj: chart.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib chart.c
+
+chart.exe: chart.dfo chart.obj
+     link chart.dfo chart,chart,chart/map,\lib\windows \lib\gdi \lib\kernel \lib\swlibc
+     mapsym  chart
+     ne chart
+
+chart.res: chart.rc
+    rc chart.rc

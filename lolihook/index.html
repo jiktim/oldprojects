@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>lolihook</title>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+    <meta property="og:title" content="lolihook">
+    <meta property="og:description" content="Bestest csgo cheat!">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="bg" class="background"></div>
+    <main class="main-container">
+        <div class="main-content">
+            <h1 id='title' class="title" style="margin-bottom: 0;">LoliHook</h1>
+            <p class="text" style="text-align: center; font-size: 150%; margin-top: 0;">Bestest cheat</p>
+        </div>
+    </main>
+</body>
+
+</html>
+<script>
+    const imgs = ["./img/1.png", "./img/2.png", "./img/3.jpg", "./img/4.png"]
+    let img = imgs[Math.floor(Math.random() * imgs.length)];
+    document.getElementById('bg').style.backgroundImage = `url(${img})`;
+</script>

@@ -1,0 +1,43 @@
+{
+  "name": "jauth",
+  "version": "0.0.1",
+  "description": "A Discord bot for Two-Factor Authentication.",
+  "author": "jiktim (https://jikt.im)",
+  "contributors": [
+    "smolespi (https://espi.xyz)",
+    "resolved (https://github.com/resolvedxd)",
+    "cth103 (https://twitter.com/cth103)"
+  ],
+  "license": "GPL-3.0+",
+  "homepage": "https://jikt.im/",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "bot": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jiktim/JikAuth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jiktim/JikAuth/issues"
+  },
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "eris": "^0.10.1",
+    "node-superfetch": "^0.1.9",
+    "rethinkdbdash": "^2.3.31",
+    "aes256": "^1.0.4",
+    "node-2fa": "^1.1.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1"
+  }
+}

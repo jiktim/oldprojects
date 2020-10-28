@@ -1,0 +1,44 @@
+{
+  "name": "jikpizza",
+  "version": "1.0.0",
+  "description": "order pizza, jiktim style",
+  "main": "index.js",
+  "dependencies": {
+    "cities.json": "^1.1.5",
+    "countryjs": "^1.8.0",
+    "crypto": "^1.0.1",
+    "did-you-mean": "0.0.1",
+    "eris": "^0.10.1",
+    "get-random-values": "^1.2.0",
+    "node-fetch": "^2.6.0",
+    "node-gzip": "^1.1.2",
+    "nominatim-browser": "^2.0.2",
+    "nominatim-geocoder": "^0.1.4",
+    "request": "^2.88.0",
+    "snekfetch": "^4.0.4",
+    "unirest": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "8",
+    "eslint": "4.x"
+  },
+  "scripts": {
+    "test": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiktim/JikPizza.git"
+  },
+  "keywords": [
+    "pizza",
+    "pizzabot",
+    "discord",
+    "jiktim"
+  ],
+  "author": "jiktim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiktim/JikPizza/issues"
+  },
+  "homepage": "https://github.com/jiktim/JikPizza#readme"
+}

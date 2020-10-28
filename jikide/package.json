@@ -1,0 +1,25 @@
+{
+  "name": "jikide",
+  "version": "1.0.0",
+  "description": "an ide, just that.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "ide"
+  ],
+  "author": "jiktim",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "electron": "^6.0.12",
+    "eslint": "^6.5.1",
+    "eslint-config-google": "^0.14.0"
+  },
+  "dependencies": {
+    "discord-rpc": "^3.1.0",
+    "monaco-editor": "^0.18.1"
+  }
+}

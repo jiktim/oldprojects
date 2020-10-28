@@ -1,0 +1,103 @@
+menuid
+
+Usage:  menuid <rci file> [<rc file>]
+
+menuid takes the input file <rci file>, does a textual substitution
+of selected identifiers, and writes the result to <rc file>.  The
+<rc file> is appropriate input to the Microsoft Windows rc resource
+compiler.  Additionally, menuid sends an output stream to menu.h
+#define-ing a bunch of constants for referencing the various menus,
+dialog boxes, and controls described in the rc file.
+
+The following rci lines are operated on by menuid:
+
+        DIALOG
+        CTL
+        STATCTL, LTEXT, CTEXT, RTEXT, RECTITEM
+        CHECKBOX, PUSHBUTTON, RADIOBUTTON
+        EDITCTL, EDITITEM
+        MENU, MENUITEM, POPUP
+
+If the 'result' or 'id' text (see below) is already a number, menuid
+will do no text replacement.  If the id field is left blank, menuid will
+insert a dummy value, but no output is sent to menu.h for that line. 
+
+------------------------------------------------------------------------------
+Menus
+
+
+MENUITEM "text", result-id, <options> [,END]
+
+The 'result' field of the MENUITEM lines may be replaced by identifiers
+(instead of a number, as required by rc).  For each defined MENU, the
+first MENUITEM has its 'result' field replaced by the number 256, and each
+subsequent MENUITEM is assigned the next integer.  A POPUP line does not
+affect the 'result' count.  A "#define IDM<result-id> <result>' line is
+sent to menu.h for each MENUITEM line.  menuid will also send a line to
+menu.h defining the the menuitem's index within the current popup.  The
+symtax of the line is "#define <result-id> <index>".  This index number
+can be used by a windows application to modify the menuitem at run-time.
+
+
+POPUP "text", <options>, [,END]
+
+In order to modify a menuitem in a popup menu, it is necessary to know
+the menu item index and the popup menu index.  The "text" field of the
+POPUP line is identifierized (i.e., made all-caps and squeezed of spaces),
+and is then used for the '#define <text> <index>' line to menu.h.
+It is also useful to be able to translate the menu item results (as sent
+through the input routiens) to indices into the popup menus.  The define
+'#define IDP<text> <result>' is used for this purpose.  For example, the
+popup menu defintion:
+
+    POPUP "Format", <>
+    BEGIN
+        MENUITEM "General", GEN
+        MENUTIEM "Decimal", DEC
+        MENUITEM "Bar Graph", BAR
+    END
+
+may produce the following #define-s:
+
+#define FORMAT  3
+#define IDPFORMAT      270 
+#define GEN     1
+#define IDMGEN  271
+#define DEC     2
+#define IDMDEC  272
+#define BAR     3
+#define IDMBAR  273
+
+Suppose the user clicked the "Bar Graph" element on the popup menu.  Your
+input proceudure would receive the number 273 (IDMBAR), which you could
+translate into a menu item index by calculating 273 - IDPFORMAT = 3.  You
+could use the index 3 to do such things as disable the item, put a check
+by it, etc.
+
+------------------------------------------------------------------------------
+Dialog boxes
+
+
+CTL         "text", id, class, style, x, y, cx, cy
+PUSHBUTTON  "text", id, x, y, cx, cy
+CHECKBOX    "text", id, x, y, cx, cy
+RADIOBUTTON "text", id, x, y, cx, cy
+STATCTL     "text", id, style, x, y, cx, cy
+LTEXT       "text", id, x, y, cx, cy
+CTEXT       "text", id, x, y, cx, cy
+RTEXT       "text", id, x, y, cx, cy
+RECTITEM    id, style, x, y, cx, cy
+EDITCTL     "text", id, style, x, y, cx, cy
+EDITITEM    id, x, y, cx, cy
+
+The 'id' fields are replaced by integers, with each identifier given
+a unique value.  The line sent to menu.h looks something like:
+'#define IDD<id> <integer>'.  Your dialog controller will probably
+contain a lot of 'case IDDFOO:' statements in its switch.
+
+menuid builds a symbol table of identifiers found in dialog boxes, so if
+you repeat an identifier in a dialog box, it will be assigned the same
+number used in the previous definition.  Using this feature should probably
+be avoided except in simple cases (like Ok and Cancel buttons), since the
+numbers assigned to dialog controls may not be in numeric order.
+

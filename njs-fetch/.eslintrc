@@ -1,0 +1,3 @@
+{
+	"extends": "@isaac.frontend/eslint-config-es6"
+}

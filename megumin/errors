@@ -1,0 +1,58 @@
+errors wiped 9/12/2018 2:28pmTypeError: Cannot read property 'toLowerCase' of undefined
+TypeError: Cannot read property 'createInvite' of undefined
+TypeError: cmds[commandName] is not a function
+TypeError: cmds[commandName] is not a function
+TypeError: Cannot read property 'isPlaying' of undefined
+TypeError: Cannot read property 'isPlaying' of undefined
+SyntaxError: Unexpected token / in JSON at position 136
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: Cannot read property 'lastdaily' of undefined
+SyntaxError: Unexpected token 
+ in JSON at position 31
+TypeError: Cannot read property '244509121838186497' of undefined
+SyntaxError: Unexpected string in JSON at position 112
+SyntaxError: Unexpected string in JSON at position 112
+TypeError: Cannot read property 'cookies' of undefined
+SyntaxError: Unexpected token r in JSON at position 127
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: Cannot read property 'lastdaily' of undefined
+TypeError: msg.reply is not a function
+TypeError: msg.channel.creatMessage is not a function
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property 'cookies' of undefined
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property 'cookies' of undefined
+SyntaxError: Unexpected end of JSON input
+TypeError: ((((seconddatething.getTime(...) - datething.getTime(...)) / 1000) / 60) / 60).splice is not a function
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property '284432595905675264' of undefined
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+TypeError: (intermediate value).now is not a function
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property 'lastdaily' of undefined
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+SyntaxError: Unexpected end of JSON input
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'cookies' of undefined
+TypeError: Cannot read property 'id' of undefined
+TypeError: Cannot read property 'channels' of undefined
+TypeError: Cannot read property 'createInvite' of undefined

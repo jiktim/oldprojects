@@ -1,0 +1,2 @@
+# FireBot
+a bot ok?

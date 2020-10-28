@@ -1,0 +1,15 @@
+{
+    "prefix": "",
+    "ownerIDs": [
+        ""
+    ],
+    "token": "",
+    "rethinkDB": {
+        "db": "chino"
+    },
+    "sentryDSN": null,
+    "LogChannelID": "",
+    "DBLToken": "",
+    "osuAPI": "",
+    "weebSHToken": ""
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta content="The ultimate all-in-one Discord bot." name="description">
+  <meta content="<%= bot.user.username %>" property="og:title">
+  <meta content="https://hibiki.app" property="og:url">
+  <meta content="The ultimate all-in-one Discord bot." property="og:description">
+  <meta content="<%= bot.user.username %>" name="twitter:title">
+  <meta content="The ultimate all-in-one Discord bot." name="twitter:description">
+  <%- include("../partials/head.ejs") %>
+  <link rel="stylesheet" href="../static/css/index.css">
+  <script src="../static/navbar.js"></script>
+  <title><%= bot.user.username %></title>
+</head>
+
+<body>
+
+  <section class="hero gradient is-fullheight">
+    <div class="hero-head">
+      <header class="navbar is-transparent">
+        <div class="container">
+          <div class="navbar-brand">
+            <p class="navbar-item">
+              <img src="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png" alt="Bot Avatar" class="nav-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+            </p>
+            <div class="navbar-item" href="/"><%= bot.user.username %></div>
+            <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end" style="position: relative;">
+              <a href="/invite/" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-external-link-alt"></i></span>
+                <span> Invite </span>
+              </a>
+              <a href="/login/" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                <span> Dashboard </span>
+              </a>
+              <a href="/support/" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-question-circle"></i></span>
+                <span> Support </span>
+              </a>
+              <a href="#stats" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                <span> Stats </span>
+              </a>
+              <a href="#features" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-magic"></i></span>
+                <span> Features </span>
+              </a>
+              <a href="#about" class="navbar-item">
+                <span class="nav-icon"><i class="fas fa-info-circle"></i></span>
+                <span> About </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="https://cdn.discordapp.com/avatars/<%= bot.user.id %>/<%= bot.user.avatar %>.png?size=512" class="logo">
+        <p class="title is-2"><%= bot.user.username %></p>
+        <p class="subtitle has-text-white is-4" style="padding-bottom: 5px">The ultimate all-in-one Discord bot.</p>
+        <p class="control has-text-centered">
+          <a class="button is-large is-light" href="/invite/">
+            <span class="icon is-small">
+              <i class="fas fa-plus"></i>
+            </span>
+            <span>Invite <%= bot.user.username %></span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <% let useramnt = 0; bot.guilds.forEach(g => { useramnt += g.memberCount; });
+  let owneramt = 0; bot.commands.forEach(c => c.category == "Owner" ? owneramt++ : null); %>
+
+  <!-- Statistics-->
+  <section class="hero is-dark is-bold" id="stats">
+    <div class="hero-body">
+      <div class="container">
+        <nav class="columns has-text-centered">
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-comment-alt fa-3x"></i></span>
+            <p class="subtitle"><%= bot.guilds.size %> servers</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-users fa-3x"></i></span>
+            <p class="subtitle"><%= useramnt %> users</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-stream fa-3x"></i></span>
+            <p class="subtitle"><%= bot.commands.size - owneramt %> commands</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-clock fa-3x"></i></span>
+            <p class="subtitle"><%= format.uptimeFormat(process.uptime()); %></p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-wifi fa-3x"></i></span>
+            <p class="subtitle"><%= bot.shards.get(0).latency %> ms</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Features-->
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="container">
+        <nav class="columns has-text-centered">
+          <div class="column">
+            <br>
+            <span class="icon is-large"><i class="fa fa-hammer fa-3x"></i></span>
+            <p class="subtitle is-4">Useful Mod Tools</p>
+            <p>Many useful moderation commands are included.</p>
+          </div>
+          <p class="title is-2 has-text-centered" id="features">Features</p>
+          <div class="column">
+            <br>
+            <span class="icon is-large"><i class="fa fa-star fa-3x"></i></span>
+            <p class="subtitle is-4">Feature-packed</p>
+            <p>Tons of features &amp; utilities are available.</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container">
+        <nav class="columns has-text-centered">
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-scroll fa-3x"></i></span>
+            <p class="subtitle is-4">Powerful Logging</p>
+            <p><%= bot.user.username %> can log nearly every server event.</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-cog fa-3x"></i></span>
+            <p class="subtitle is-4">Fully customisable</p>
+            <p>Most of <%= bot.user.username %>'s behaviour is customisable.</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-heart fa-3x"></i></span>
+            <p class="subtitle is-4">User Interaction</p>
+            <p>Have fun with roleplay &amp; interaction commands.</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="container">
+        <nav class="columns has-text-centered">
+          <div class="column">
+            <span class="icon is-large"><i class="fa fa-universal-access fa-3x"></i></span>
+            <p class="subtitle is-4">Easy to Use</p>
+            <p><%= bot.user.username %> is designed to be powerful yet easy to use.</p>
+          </div>
+          <div class="column">
+            <span class="icon is-large"><i class="fas fa-hand-holding-heart fa-3x"></i></span>
+            <p class="subtitle is-4">Consistent Updates</p>
+            <p><%= bot.user.username %> is constantly developed &amp; updated.</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="hero is-light is-bold">
+    <div class="hero-body">
+      <div class="has-text-centered" id="about">
+        <p class="title is-2" style="margin-bottom: 0px !important">About</p>
+        <p><%= bot.user.username %> is a <a href="https://discordapp.com/" style="color: #886fb9">Discord</a> bot
+          written in <a href="https://nodejs.org" style="color: #886fb9">Node.js</a> &amp; powered by the <a href="https://abal.moe/Eris/" style="color: #886fb9">Eris</a> library </p>
+        <p>Made to handle general needs in an easy &amp; powerful way. <%= bot.user.username %> is a versatile all-in-one Discord bot.</p>
+        <br>
+        <p>Development began in August 2018 as a project for a small community, and version 1.0 was released in September.</p>
+        <p>After being inactive, development began again in March 2019, and after many hours, v2 was released in August 2019.</p>
+        <p>v2 has gotten many feature & stability updates over the past year and will continue to do so for the foreseeable future.</p>
+      </div>
+      <br>
+      <div class="container about has-text-centered">
+        <p class="title is-3">Developers</p>
+        <p class="subtitle">These people actively develop <%= bot.user.username %> &amp; keep her running!</p>
+        <br>
+        <nav class="columns has-text-centered">
+          <div class="column">
+            <img src="../static/img/avatars/smolespi.png" class="avatar">
+            <p class="subtitle">smolespi</p>
+            <p>Owner &amp; Developer</p>
+            <a href="https://twitter.com/smolespi/" class="socials">
+              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a href="https://github.com/smolespi/" class="socials">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+            </a>
+            <a href="https://lesbian.codes/" class="socials">
+              <span class="icon is-small"><i class="fas fa-globe"></i></span>
+            </a>
+          </div>
+          <div class="column">
+            <img src="../static/img/avatars/resolved.png" class="avatar">
+            <p class="subtitle">resolved</p>
+            <p>Developer</p>
+            <a href="https://twitter.com/resolvedxd/" class="socials">
+              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a href="https://github.com/resolvedxd/" class="socials">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+            </a>
+          </div>
+          <div class="column">
+            <img src="../static/img/avatars/cth103.png" class="avatar">
+            <p class="subtitle">cth103</p>
+            <p>Developer</p>
+            <a href="https://twitter.com/cth103/" class="socials">
+              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a href="https://github.com/cthpw103/" class="socials">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+            </a>
+          </div>
+        </nav>
+        <p class="title">Contributors</p>
+        <p class="subtitle">These people have significantly contributed to <%= bot.user.username %>.</p>
+        <br>
+        <nav class="columns has-text-centered">
+          <div class="column is-7">
+            <img src="../static/img/avatars/tttie.png" class="avatar">
+            <p class="subtitle"> TTtie </p>
+            <p> Contributed to modules </p>
+            <a href="https://twitter.com/tttie_tt/" class="socials">
+              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a href="https://github.com/tttie/" class="socials">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+            </a>
+            <a href="https://tttie.cz" class="socials">
+              <span class="icon is-small"><i class="fas fa-globe"></i></span>
+            </a>
+          </div>
+          <div class="column is-3">
+            <img src="../static/img/avatars/chi.png" class="avatar">
+            <p class="subtitle"> Chi </p>
+            <p> Helped with webauth </p>
+            <a href="https://twitter.com/Chiibiki/" class="socials">
+              <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a href="https://github.com/TishDev/" class="socials">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    </div>
+  </section>
+  <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>
