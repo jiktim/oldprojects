@@ -1,0 +1,35 @@
+/* General Styling */
+
+html,
+body {
+  overflow: hidden;
+  background: url(../img/bg1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Layout Styling */
+
+.container {
+  max-width: 40em;
+}
+
+.input {
+  width: 20em;
+}
+
+.spacing {
+  margin: 3em;
+}
+
+/* Project List Styling */
+
+.list {
+  background: rgba(255, 255, 255, 0.164);
+}
+
+.list-item {
+  padding: 15px;
+}

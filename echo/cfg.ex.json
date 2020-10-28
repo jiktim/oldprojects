@@ -1,0 +1,15 @@
+{
+  "echo": {
+    "cookieSecret": "",
+    "port": 6969
+  },
+  "discord": {
+    "redirect_uri": "",
+    "secret": "",
+    "userid": "",
+    "scope": ["identify"]
+  },
+  "rethink": {
+    "db": "echo"
+  }
+}
