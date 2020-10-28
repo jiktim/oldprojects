@@ -1,0 +1,42 @@
+<div class="columns">
+  <div class="sidebar">
+    <div class="column">
+      <%# Sticky menu - will always show, even while scrolling %>
+      <div class="menu sticky">
+        <div class="media">
+          <%# Project logo, name, & buttons %>
+          <div class="columns is-vcentered is-centered">
+            <div class="column is-5">
+              <div class="media-left">
+                <%# Shows the project logo if applicable %>
+                <% if (project.logo) { %>
+                <figure class="image is-48x48">
+                  <img src="<%=project.logo%>" class="is-rounded" alt="Project Icon">
+                </figure>
+                <% } else { %>
+                <%# Falls back to a dummy image %>
+                <figure class="image is-48x48 is-1by1">
+                  <img src="https://discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png" class="is-rounded" alt="No Project Icon">
+                </figure>
+                <% } %>
+              </div>
+            </div>
+            <div class="media-content">
+              <div class="column">
+                <span class="has-text-white is-size-5"><%= project.name %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="menu-list" id="menu" style="margin-top: 10px; max-width: 10em;">
+          <li><a id="events" class="has-text-white item"><span class="icon"><i class="fas fa-exclamation-triangle"></i></span> Events</a></li>
+          <li><a id="stats" class="has-text-white item"><span class="icon"><i class="fas fa-stream"></i></span> Statistics </a></li>
+          <li><a id="members" class="has-text-white item"><span class="icon"><i class="fas fa-users"></i></span> Members </a></li>
+          <% if(user.id === project.owner.id || (project.members && project.members.find(m => m.id === user.id).role === "Administrator")) { %>
+          <li><a id="invites" class="has-text-white item"><span class="icon"><i class="fas fa-link"></i></span> Invites </a></li>
+          <li><a id="settings" class="has-text-white item"><span class="icon"><i class="fas fa-cog"></i></span> Settings </a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
