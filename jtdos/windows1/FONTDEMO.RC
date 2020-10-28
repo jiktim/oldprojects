@@ -1,0 +1,13 @@
+fontdemo  it
+ begin
+   OPTIONS
+    StdChars
+    BatchMouse
+ end
+fontdemo  cursor  fontdemo.cur
+fontdemo  icon    fontdemo.ico
+fontdemo menu
+begin
+    Menuitem "Start session", 1
+    Menuitem "Clear", 666
+end

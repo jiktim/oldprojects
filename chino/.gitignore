@@ -1,0 +1,27 @@
+#DB
+rethinkdb_data
+
+# Modules
+node_modules/
+jspm_packages/
+
+# System Files
+.DS_Store
+.DB
+.DLL
+ __MACOSX
+
+# Configuration
+config.json
+
+# NPM
+.npm
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Binaries
+rethinkdb
+rethinkdb.exe

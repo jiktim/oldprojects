@@ -1,0 +1,16 @@
+sample.dfo: sample.def
+    mc sample
+
+sample.obj: sample.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I C:\LIB -NT sample sample.c
+
+sample1.obj: sample1.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I C:\LIB -NT sample1 sample1.c
+
+sample.exe: sample.dfo sample.obj
+    link sample.dfo sample sample1,sample,sample/map/li,\lib\windows \lib\gdi \lib\kernel \lib\swlibc
+    mapsym sample
+    ne sample
+
+sample.res: sample.rc sample.cur sample.ico
+    rc sample.rc

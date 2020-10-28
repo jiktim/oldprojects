@@ -1,0 +1,10 @@
+name    ppdemo
+description demos the push to pull converter
+
+code    fixed
+data    fixed single
+
+heapsize    5000
+
+loadproc    PPDemoLoad
+freeproc    PPDemoFree

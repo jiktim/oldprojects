@@ -1,0 +1,31 @@
+{
+  "name": "ram",
+  "version": "1.0.0",
+  "description": "Modular and fun Discord bot. Written in Akairo.",
+  "main": "ram.js",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "common-tags": "^1.8.0",
+    "discord-akairo": "github:1Computer1/discord-akairo#master",
+    "discord.js": "github:discordjs/discord.js#master",
+    "eslint": "^5.7.0",
+    "moment": "^2.22.2",
+    "moment-duration-format": "^2.2.2",
+    "node-superfetch": "^0.1.9",
+    "pg": "^7.5.0",
+    "random-js": "^1.0.8",
+    "raven": "^2.6.4",
+    "sequelize": ">=5.3.0",
+    "taihou": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord-bot",
+    "javascript"
+  ],
+  "author": "Tishy",
+  "license": "GPL-3.0"
+}

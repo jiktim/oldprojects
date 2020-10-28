@@ -1,0 +1,72 @@
+{
+    "CC BY": {
+        "commercialUse": true,
+        "derivativeUse": true,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": false,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license",
+        "licenseSite": "https://creativecommons.org/licenses/by/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by/4.0/legalcode"
+    },
+    "CC BY-SA": {
+        "commercialUse": true,
+        "derivativeUse": true,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": true,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license, derivative works should also follow the same terms",
+        "licenseSite": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by-sa/4.0/legalcode" 
+    },
+    "CC BY-ND": {
+        "commercialUse": true,
+        "derivativeUse": false,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": false,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license, no derivative works allowed",
+        "licenseSite": "https://creativecommons.org/licenses/by-nd/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by-nd/4.0/legalcode" 
+    },
+    "CC BY-NC": {
+        "commercialUse": false,
+        "derivativeUse": true,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": false,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license, you cannot use it for commercial purposes",
+        "licenseSite": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by-nc/4.0/legalcode" 
+    },
+    "CC BY-NC-SA": {
+        "commercialUse": false,
+        "derivativeUse": true,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": true,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license, you cannot use it for commercial purposes and derivative works should also follow the same terms",
+        "licenseSite": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" 
+    },
+    "CC BY-NC-ND": {
+        "commercialUse": false,
+        "derivativeUse": false,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": false,
+        "basicDesc": "You're allowed to use the material if you give appropriate credit and provide a link to the license, you cannot use it for commercial purposes and derivative works aren't allowed",
+        "licenseSite": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "legalLink": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode" 
+    },
+    "CC0": {
+        "commercialUse": true,
+        "derivativeUse": true,
+        "attribution": true,
+        "closedSource": true,
+        "shareAlike": false,
+        "basicDesc": "You're allowed to use the material for whatever you want, no rights reserved",
+        "licenseSite": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "legalLink": "https://creativecommons.org/publicdomain/zero/1.0/legalcode" 
+    }
+}

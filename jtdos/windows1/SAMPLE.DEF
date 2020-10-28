@@ -1,0 +1,13 @@
+NAME    SAMPLE
+DESCRIPTION Sample Windows Application
+
+CODE    MOVEABLE
+DATA    MOVEABLE MULTIPLE
+
+SEGMENTS
+    CODE sample
+    CODE sample1
+
+HEAPSIZE    2048
+
+LOADPROC SampleLoad

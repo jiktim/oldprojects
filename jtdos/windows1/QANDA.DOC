@@ -1,0 +1,780 @@
+
+Q:  How are Windows Fonts different than MacIntosh Fonts?  Can you
+    give an example of how to use multiple fonts?  What font sizes
+    are available, and what does Terminal and Document correspond to?
+
+A:  Previous documentation wasn't clear on the topic of using multiple
+    fonts.  This time, we've improved the documentation as well as
+    included some example code, showing how to query the fonts that
+    are available and display multiple fonts in a window.  See the
+    FontDemo code for a detailed example.  By our January release,
+    our goal is to include substantial tutorial material in the
+    Programmer's Guide.
+
+    One significant difference between the MacIntosh and Windows is
+    that Windows is device independent; i.e. it runs on many different
+    machines from different manufacturers.  Since the screen sizes,
+    resolutions, and aspect ratios (the rectangular proportions of
+    a screen pixel) vary from machine to machine, an application that
+    uses multiple fonts needs to determine the exact set of fonts
+    available on that machine.  We provide some "stock" fonts that
+    any application can easily access that are selected for readability
+    for each machine.
+
+    We provide the OEMs a set of fonts for them to include that
+    correspond to small, medium and large in two faces, which we call
+    "Terminal" and "Document".  Terminal is fixed-pitch (all characters
+    are the same width) and is intended for applications that need
+    to emulate character displays or want to insure that text on several
+    lines is aligned.  The Document face is variable-pitch and is
+    intended for better looking display of text.  The OEMs are
+    encouraged to provide as many different fonts as they can for their
+    machines and we expect that we will have a very large variety of
+    fonts available for Windows after the initial release.  Some folks
+    may have examined the Windows.fon that we supply and found that
+    there are a variety of fonts in the file that aren't available
+    when running on an IBM PC.  This is because additional fonts are
+    included to support other graphics cards, such as the Hercules
+    card, that are designed for a different aspect ratio and resolution.
+
+    We encourage application writers to adopt one of two strategies.
+    The first applies to applications that don't require rich font
+    usage.  They should use the stock fonts, since they will be certain
+    to look best on each machine & graphics card.  The other strategy
+    should be used by applications that see rich text usage as critical
+    to their product.  Those applications should make a point of
+    querying the fonts available when they initialise, and selecting
+    from among that set (or perhaps letting the user make a choice
+    via the User Profile).  By querying, the application can be sure
+    to take advantage of the fonts available on each device, as well
+    as to be upward compatible with new fonts as the users acquire
+    them.
+
+    The Windows font model is that the application creates a font,
+    specifying all the attributes via CreateFont and then selects the
+    font in the DC being used to display.  Some additional detail is
+    described below.
+
+    To select type face and point size, you build an entire logical
+    font by filling in the fields of the logical font structure and
+    passing this structure to CreateFontIndirect().  All fields must
+    be filled in, but you may alter any field to get the effect you
+    want.  If you then want to change fonts, you go though the create
+    procedure again.  The idea is that you create a logical font and
+    ask Windows to realise a font for the output device that most
+    closely matches the font you requested.
+
+    Note:
+
+       o  Once you have created a font, it is an object in the Windows
+          system and therefore consumes system resources.  After you
+          are done using the font and wish to free the memory used,
+          the application should call DeleteObject.  Fancy text editors
+          can trade off memory used (several K per font created) with
+          the time to perform a CreateFont by keeping a small cache.
+
+          The idea is that you create as many font objects as you need
+          (e.g. varing attributes) and then select among them by calling
+          SelectObject.  This allows changing fonts very quickly and
+          sharing among applications.
+
+       o  To find out about the current font, you may do a GetObject()
+          on the handle returned by CreateFontIndirect().  You give
+          GetObject a handle, length and a long pointer to a structure
+          (e.g. logical font) and it fills it in for you.
+
+          E.g. to find out about the attributes of the stock fonts,
+          you may do:
+
+            h = GetStockObject( VAR_FONT );
+            GetObject( h, sizeof( LOGFONT ), (far *)&LocalFontStructure );
+
+    When setting a height in a logical font the sizes (height and width)
+    are given in current user units, as determined by SetMapMode.  The
+    default is TEXTMODE which gives sizes in PIXELS.  In our January
+    release, there will be a TWIPS mode, which is a 20th of a printer
+    point, or 1440th of an inch.
+
+
+Q:  Can I set the font for a dialog box or an individual control?
+
+A:  It is not possible to set the typeface and pointsize for dialogs
+    in the current release, however we view this as a useful feature
+    and will support it in the product.
+
+
+Q:  There is a very noticeable delay in the time between a CreateDlg
+    and the time it begins to draw on the display.  A dialog box like
+    that illustrated in Microsoft Chart for Mac page 22 take 2-3 sec
+    to begin drawing and another 2-3 secs. to display.
+
+A:  Our goal with Windows is to give "unprecendented" performance on
+    8088 and 8086 machines, and as you point out, the Dialog features
+    don't currently live up to this goal.  In this release, you should
+    notice a definite improvement (48% by our benchmarks) over the
+    last release.  We are in the process of making an architectural
+    change to try for a binary order of magnitude additional
+    improvement.
+
+
+Q:  What does it mean when the message "Error creating temp file"
+    appears when running the resource compiler on a menu.
+
+A:  The RC.EXE program had a small file buffer.  It simply couldn't
+    handle your large menu.  The bug has been repaired.
+
+
+Q.  Is there any important order dependencies in Windows?
+
+A.  The following order dependencies are known for Windows.  They will
+    be included in the next edition of the Programmer's Guide.
+
+o   Importantly, no DC's are valid until AFTER CreateWindow has finished
+    execution.
+
+            Load Proc --> New Proc --> CreateProc
+
+    Thus, neither the LoadProc or NewProc are able to use procedures
+    that manipulate DC's.  This includes dialogs, control boxes, etc.
+
+o   Upon opening or closing a windows the following class procedures
+    are called:
+
+    Icon Proc --> Size Proc --> Paint Proc
+
+o   Upon destroying a window the following class procedures are called:
+
+    Destroy Proc --> Destroy Proc --> Free Proc
+
+    Note that the destroy procedure is called twice.  Once to query,
+    once as a "callback".
+
+o   Upon an arbitrary redisplay, the following class procedures are called:
+
+    Size Proc --> Paint Proc
+
+o   Upon an arbitrary input event, the following class procedures are
+    called:
+
+    Input Proc --> Focus Proc (if applies) --> Scroll Proc (if applies)
+
+
+Q:  I am using memory as a "disk cache", and it would be bad if any
+    of my buffers were swapped to disk by the memory manager.
+
+A:  By definition, global DATA objects will not be swapped unless they
+    are marked as swappable by the SWAP windows function call.  See
+    "discardable" later in this document.
+
+
+Q:  How do I determine how much physical memory is in the machine?
+    I want to allocate N record buffers based upon the current memory
+    size, but I can't determine N.
+
+A:  Currently you can't call a Windows function to get memory size.
+    In our January release there will be a function called
+    "GetGlobalStatistics" and a function called "GetLocalStatistics".
+    These will return information on the size of memory etc.
+
+
+Q:  I am confused about the interaction between your memory management
+    and what I need to accomplish with my memory management.  I want
+    to cache things in memory, and want these things to go away if
+    there is a shortage of memory; I don't want them ever to be swapped
+    out.
+
+A:  You will be able to mark global objects as "discardable".  I.e.
+    If the systems needs memory it will "discard" any global objects
+    so marked and return "NULL" when you try to lock their handle.
+    Just what you want.
+
+
+Q:  CreateChild does not work when NULL is passed in place of the module
+    instance.
+
+A:  This is a known bug of long standing; part of the problem is due
+    to fuzziness in module/window instance coupling.  The fix is to
+    keep your module instance in a static somewhere.  We will fix this
+    problem in the January release.
+
+
+Q:  Is there a way I can arrange to be notified when the cursor leaves
+    my window?  E.g. the user has buttoned down and is dragging an
+    object inside the window and the mouse now leaves the window and
+    I want to "abort" the move as it leaves.
+
+A:  Currently, there is no simple way to get this notification.  You
+    can get the information by Capturing the mouse whenever you drag
+    an object and calling ScreenToClient to test which window the mouse
+    in in.  We thought that most applications that support dragging
+    would want to use this technique so that they could drag from one
+    of their windows to another.  If we were going to provide the
+    feature you ask for in a simpler way, our inclination would be
+    to have a bit (option) in the input translation table requesting
+    that enter/exit events be generated.  Feedback on this would be
+    appreciated.
+
+
+Q:  In the Icon proc, may I call GetClientRect and get the size the
+    window?  Will the size returned be that of the Icon or the Expanded
+    window?
+
+A:  GetClientRect is called after the rectangle has been updated, so
+    that you get the new result.  Note that the client rectangle of
+    an iconic window is set to the size of an icon (16 by 32 on the
+    PC color card, potentially otherwise on other displays).
+
+
+Q:  By default the coordinate system is increasing x from left to right,
+    increasing y from top to bottom and the definition of a rectangle
+    is fixed by its "top left" and "lower right" corners.
+
+    What happens when I change of orientation of the coordinates so
+    that y increases from bottom to top?  How do I perform the change
+    of orientation and what impact does it have on my definition of
+    a rectangle.
+
+    E.g.
+        xLeft < xRight
+        yTop  < yBottom         for increasing y from top to bottom
+
+    but
+        yTop  > yBottom         for increasing y from bottom to top
+
+A:  GDI correctly orients rectangles, arcs and ellipses with respect
+    to the output device, so that the defining points may be passed
+    in in any order.
+
+
+Q:  It appears that if I define a default class cursor, then calls
+    to SetCursor do NOT change the cursor.  Is this true?
+
+    What I'd like to do is have a default cursor and then change it
+    when the user buttons down.  I tried to do this with a hClsCursor
+    defined to non-NULL and then did a SetCursor in my Input proc ...
+    but got no change.
+
+A:  SetCursor affects the current hardware cursor and does not modify
+    the class cursor.  If you want to dynamically change the cursor,
+    you should set the class cursor to NULL and do SetCursors in your
+    InputProc.  This is how the Reversi game indicates legal moves.
+
+
+Q:  What size code and data models does/will windows support and when?
+    I understand that eventually for the first release windows will
+    support a middle model for code and mixed model for data.
+
+A:  This release of Windows supports small and middle model.  Support
+    for large model is performed by the application by explicitly
+    allocating a data segment and creating long pointers to reference
+    it.  The models may be arbitrarily mixed, which makes it possible
+    to get the efficiency of small model, but use the data handling
+    of middle and large model when you need it.
+
+
+Q:  Since the MoveChild interface takes a width and height as well
+    as new x and y coord, may I change the width/height as the same
+    time I change x and y?
+
+    E.g.
+        child before   x:100  y:200  width:300  height:400
+        child after    x:5    y:6    width:70   height:80
+
+    may I do
+
+        MoveChild( hChild, hParent, 5, 6, 70, 80, TRUE )
+
+    or should I do the move and the size separately
+
+        MoveChild( hChild, hParent, 5, 6, 300, 400, FALSE )
+        Size( hChild, 70, 80 )
+
+    How do I control the proper repainting of the screen in the 2nd
+    technique?
+
+A:  MoveChild allows you to resize height and width.  Thus,
+
+          MoveChild( hChild, hParent, 5, 6, 70, 80, TRUE );
+
+    suffices.  We assume that the "Size" function you refer to is the
+    Window class "Size" procedure.  It is entirely up to you to control
+    any painting if you try to do so in your Size proc.
+
+XXX
+Q:  How do I use far procedure pointers?
+
+A:  Within WINDOWS.H is a definition for a far procedure:
+
+           typedef int ( FAR *  FARPROC )();
+
+   This structure defines a structure that can be called as a far
+   procedure.  The following example shows you how to use FAR
+   procedures.  FARPROC may be used in any other structure such as
+   an element of an array or record.  I.e. You may declare an array
+   of FAR procedures.  However, FAR procedures may not be statically
+   initialized -- the segment portions of any FAR procedure addresses
+   will be relocated when a code segment is moved.
+
+   If you want to get the address of a MOVEABLE object.  You may do:
+
+           FarProcedure = GetProcAddress( hInstance, (LPSTR)"Dummy" );
+
+   Where "hInstance" is the instance handle from your NEW proc and
+   "Dummy" is the procedure name.
+
+   Dummy must be declared as an export procedure in your .DEF file.
+
+   GetProcAddress is the prefered method of obtaining a FAR procedure
+   address.
+
+   #define FAR far
+   #define PASCAL pascal
+
+       typedef int ( FAR *  FARPROC )();
+
+
+       int FAR PASCAL Dummy()
+       {
+          printf("%s","It really works for you.\n\r" );
+       }
+
+       main ( ) {
+
+           FARPROC FarProcedure[5];
+           FARPROC SingleFarProcedure;
+
+           FarProcedure[ 4 ] = Dummy;
+           (*FarProcedure[ 4 ])();
+
+           SingleFarProcedure = Dummy;
+           (*SingleFarProcedure)();
+
+        }
+
+
+Q:  I'm having trouble initalizing a static (LPSTR) array?
+
+A:  You should only initalize an array in your CREATE proc so that
+    the code can later be discarded.  You will still have to do it
+    one subscript at a time.
+
+
+Q:  I'm having trouble using a local function like swap.
+
+A:  Sample call:
+        int x,y;
+        x = 1;
+        y = 2;
+        swap ( (int far *)&x, (int far *)&y );
+
+    Function:
+      swap ( a, b );
+      int far *a, far *b;
+      {
+         int temp;
+         temp = *a;
+         *a = *b;
+         *b = temp;
+      }
+
+Q.  UnionRect doesn't seem to display a rectangle with a zero width?
+
+A.  UnionRect makes it a NULL rectangle so you will have to check the
+    parameters to make sure the width or height is not zero.
+
+
+Q:  If I do a global alloc of say 10K and then do a local alloc of
+    5K, does that 5K piece get allocated from the 10K global alloc?
+    The description in section 2-5 would indicate that if I use the
+    LOCAL flag it would.  It also seems that I would use the GLOBAL
+    flag only if I wanted to keep that data around for other modules.
+
+A:  Local allocation is always done from the application heap, which
+    is itself a global object.  Globally allocated objects are useful
+    to pass to other applications, but they have a higher overhead,
+    since they are paragraph aligned in memory.  Global objects, unlike
+    local, may be created larger than 64K.
+
+
+Q:  I am trying to dynamically alter the position of the dialog box
+    called "dtOpen" in the .rc file from its predefined location in
+    the .rc file, but nothing is happening, in fact the dialog will
+    now not display.
+
+        DoDialog(id)
+                hwndDialog = CreatDlg(.....);
+
+        BOOL fnOpen(hwnd, argc, argv)
+                .
+                .
+                CASE IDINIT:
+
+                        GetClientRect(hwndDialog, (LPRECT)&r);
+                        MoveCtl(hwndDialog, hwndNotepad, r.left+70,...TRUE);
+
+A:  A dialog box is different from a control.  Controls are children
+    windows and dialog boxes are popup windows.  You can't use MoveCtl
+    (MoveChild) to move a dialog box.  In future releases we will supply
+    an analogues routine, MoveDialog (MovePopup), to do the job.
+
+
+Q:  Since the AT has provisions for block transfer operations to/from
+    "extended" memory, I would assume that Windows will utilize this
+    memory before using disk for swapping.  Is this a valid assumption?
+    If it is (and I hope that it is), it changes my viewpoint about
+    swapping.  For example, I am currently marking very little for
+    swapping and will mark certain things for discarding.  If I know
+    that swapping is being performed to RAM, I might use that
+    information to instead mark more objects for swapping because of
+    the high transfer rates involved.  Perhaps a third class of object
+    disposition is desirable:
+
+        swappable ram-swappable discardable
+
+A:  While we won't commit to using the extended AT memory in our first
+    release, your idea is obviously a good one and we'll look into
+    it.
+
+
+Q:  If in the input translation table I define an event to be two mouse
+    clicks of button 1, what controls the interval in which they have
+    to happen to be considered one event rather than two separate click
+    events?
+
+    The IT grammar allows me to define an interval between two click
+    BUT if I do this it would appear that I'm now not able to monitor
+    the click rate that the user has set via the control panel.
+
+    I.e., how do I define a double click event so that it is sensitive
+    to the click rate from the control panel?
+
+A:  There is an (apparently undocumented) keyword in the IT grammer
+    called DoubleClickTime.  If you use this in place of hard coded
+    milliseconds, you will automatically tie in with the Control Panel.
+    For example:
+
+    You may say:
+
+            apps    it      BEGIN
+            Options
+                    BatchMouse
+            Definitions
+                    < DoubleClickTime
+                        Mouse-Button1 Mouse-Button1^ Mouse-Button1 = 17
+            END
+
+    Instead of:
+
+            apps    it      BEGIN
+            Options
+                    BatchMouse
+            Definitions
+                    < 500
+                        Mouse-Button1 Mouse-Button1^ Mouse-Button1 = 17
+            END
+
+   This keyword will be part of the new IT documentation.
+
+
+Q:  Problem or misunderstanding using GetClientRect
+
+        in .rc file
+
+                RECTITEM        1, 5, 12, 50, 100,100
+
+        in .c file
+
+                GetClientRect(GetDlgItem(hwnd,1), (LPRECT)&r);
+
+                r.left = is the left coordinate of the dialog box not
+                         the left + 12
+                r.top =  is the coordinate just below the dialog caption not
+                         top + 50
+
+A:  GetClientRect always returns the rectangle in user coordinates.
+    Since controls (e.g, RECTITEM) are children windows without caption,
+    menu, and border, the top-left corner of the client area matches
+    that of the window (0,0).  In other words, you only get the width
+    and height with GetClientRect.
+
+    There is routine called ClientToScreen which you can use to get
+    the coordinates of your control relative to the entire screen.
+    If you perform the same sequence to the dialog box, you should
+    find their differences to be the location of the control inside
+    the dialog box.
+
+
+Q:  Moving a parent window cause it to be painted and sized, but it's
+    children are only painted (not sized).
+
+A:  This is as intended.  We leave it up to the application to decide
+    the manner in which the contents of their window is presented.
+
+
+Q:  All screen DC's must be released before any child can be painted
+    or moved (if the child is to be visible).
+
+A:  True in this release for this case, but not future releases.  In
+    general, you want to release a DC whenever you are done using it.
+    Windows treats checking out of a screen DC as a "write lock" for
+    that window, preventing the window from being moved or otherwise
+    altered when someone is in the process of painting its contents.
+    We cache the DCs for particular windows, making GetDC and ReleaseDC
+    relatively fast.  A fine point-- it is a good idea to release screen
+    DCs before doing a Yield() or WaitEvent(), since other tasks may
+    then run and wish to change the screen layout.
+
+
+Q:  Iconedit has a mode for creating bitmaps.  Can I put a bitmap in
+    my resource file, and if I can, how can I go about loading and
+    displaying the bitmap?
+
+A:  You can use Iconedit to create bitmaps (up to 64x64), and you can
+    load it into your resource file with RC:
+
+           template  CURSOR  template.cur
+           template  ICON    template.ico
+           template  BITMAP  template.bmp
+
+    A routine "BitmapLoad" to read it in from the resource file will be
+    provided in the January release of Windows.
+
+
+Q:  Ok, I can put bitmaps into my resource file, and I can write
+    "BitmapLoad" to get a handle to the bitmap, but how do I go about
+    displaying the bitmap?
+
+A:  The following sequence should do it for you:
+
+        hMemoryDC = CreateCompatibleDC( hDC );
+        SelectObject( hMemoryDC, (HBITMAP)BitmapLoad(hRes,(LPSTR)"name") );
+        Bitblt( hMemoryDC, 0, 0, width, height, hDC, targetX, targetY );
+        DeleteDC( hMemoryDC );
+
+
+Q:  Is the following going to be true for parent/child windows:  When
+    a parent window does a GetDC (or is given one via the call to its
+    paint proc), all painting done with this DC will NOT blast throught
+    any children windows the parent might have.  I.e. the parent need
+    not know where its children are, it can just paint away.
+
+    The parent, if it wants, can enumerate its children and save paint
+    time by not generating bits that are under the child.  I.e. the
+    child is NOT remembering what is on its backside and so the parent
+    need not worry about keeping it up-to-date by always painting all
+    of the rectangle that was requested by the paint proc.
+
+A:  This is true for overlapping windows:  The DC you get is clipped
+    around them.  Not true for non-overlapping children.  You can
+    specify the behavior (and corresponding performance) that you want.
+
+
+Q:  Windows displays a number of rectangles on the screen, some in
+    menus, some in dialog boxes, etc.  How are the rectangles related?
+
+A:  There are three basic flavors of rectangular objects that appear
+    to the Windows user, each governed by its own set of rules as seen
+    by an applications programmer.
+
+    Pop-up windows can overlay any other kind of window on the screen
+    and are used to display drop-down menus and dialog boxes.  These
+    should be used for interactions requiring the user's immediate
+    attention, since they can obscure other applications.  Drop-down
+    menus are only active while the user holds down a mouse button.
+    Dialog boxes, in a multi-tasking, multi-application environment
+    should be used with some restraint, be sure that the response that
+    you're soliciting is likely to be the focus of the user.  Error
+    conditions are ideal examples.
+
+    Tiled, or top-level windows are the basic unit of screen space
+    for an application.  The user can adjust the size, create a new
+    window, make the window iconic, or close the window, all through
+    a standard user interface.  Applications will want to create one
+    of these for each instance of their application that looks at some
+    data.  For example, a text editor would create one of these for
+    each file that it was viewing/editing.
+
+    Child windows are the third category and are provided to make it
+    easier for applications to partition the space within a window.
+    The point of children windows is to allow the programmer to use
+    all of the rich classing and library facilities of tiled windows,
+    applied to a small area within their application.  An example is
+    the text control class that implements all the editable fields
+    in dialog boxes.  The application can simply include them within
+    a window (see the Notepad code) and then not be concerned how that
+    space is managed.  The text control will see the same external
+    interface regardless of whether it is a child window buried three
+    levels down, or as a tiled window in its own right.
+
+
+Q:  What are some rules governing children windows?
+
+A:  Here are some that may be of value, that weren't previously in the
+    documentation.
+
+    The CloseProc of all children windows are called before the parent's
+    CloseProc, ditto for OpenProc.
+
+    All children are destroyed before the parent.
+
+    Only top-level windows SizeProcs are called.
+
+    Input goes to the window owning the input focus for keyboard input
+    and to the window underneath the mouse for mouse input, just as
+    for top-level windows.
+
+
+Q:  How do I create a bitmap?
+
+A:  This routine returns a bitmap of the requested size, painted with
+    the brush that is passed in as the third parameter.
+
+    HBITMAP GetABitmap( nBitmapWidth, nBitmapHeight, hBrushToPaintWith )
+    int nBitmapWidth, nBitmapHeight;
+    HBRUSH hBrushToPaintWith;
+    {
+    /* Create a new bitmap on every call. Arbitrary sizes. */
+    HBITMAP hBitmapToReturn;
+    HDC hDisplayDC;
+
+    /* Create a "memory DC", not attached to any physical display */
+    hDisplayDC = CreateMemoryDC( (LPSTR)"display",
+                                 (LPSTR)NULL,
+                                 (LPSTR)NULL,
+                                 (LPSTR)NULL );
+
+    /* Create a memory bitmap. */
+    hBitmapToReturn = CreateCompatibleBitmap( hDisplayDC,
+                                              nBitmapWidth,
+                                              nBitmapHeight,
+                                              (LPSTR) NULL );
+
+    /* Select this bitmap as current bitmap for the memory DC */
+    SelectObject( hDisplayDC, hBitmapToReturn );
+
+    /* select the given brush, deleting any previously selected one */
+    DeleteObject ( SelectObject( hDisplayDC,
+                               ( hBrushToPaintWith ) ) );
+
+    /* Paint with it */
+    PatBlt( hDisplayDC, 0, 0, nBitmapWidth, nBitmapHeight, PATCOPY );
+
+    /* Throw away the Display Context, but return the bitmap handle */
+    DeleteDC( hDisplayDC );
+
+    return( hBitmapToReturn );
+    }
+
+
+Q:  I do not understand how you get PatBlt to work.  I give it a raster
+    op, but where's the pattern?
+
+A:  PatBlt works with the default brush as its pattern.  The raster op
+    passed to PatBlt is used as a boolean function on the brush.
+
+    Thus, if a Grey brush is selected as the current brush:
+
+          hDC = GetDC();
+          hbrGrey = GetStockObject( GREY_BRUSH );
+
+          /* Paints a black square. */
+          PatBlt( hDC, 0, 0, 100, 100, (DWORD)BLACKNESS );
+          /* Paints a grey square - raster operation is copy. */
+          PatBlt( hDC, 0, 0, 100, 100, (DWORD)PATCOPY );
+          /* Paints a white square. */
+          PatBlt( hDC, 0, 0, 100, 100, (DWORD)WHITENESS );
+
+
+Q:  How do I create bitmaps for menus and carets?
+
+A:  The manual was unclear on this point.  Here is an answer.  The
+    Icon editor may be placed in BitMap mode by a menu selection.  Files
+    written by the Icon editor have the following format.
+
+        #define     CURSOR          0       /* icon appearance */
+        #define     ICON            1
+        #define     BITMAP          2
+
+        typedef struct {
+            short   mode;           /* Cursor, Icon, Bitmap */
+            short   HotX;
+            short   HotY;
+            short   Width;
+            short   Height;
+            short   WidthBytes;
+            short   Color;
+        } ICONEDITHEADER;
+
+
+    Following the header, the following number of bytes corresponding to
+    the Icon editor bitmap are written.
+
+             csWidthBytes * csHeight * 2
+
+    The Icon editor may be used to generate a bitmap.  The information
+    above may be used read a bitmap into memory.  The bitmap read into
+    memory may be used as an argument in a a physical bitmap structure
+    as described by the Programmer Reference Guide.  This structure
+    in turn may be passed to CreateBitMapIndirect to generate a handle
+    to a bitmap suitable for use with menus and carets.
+
+
+Q:  It sure would be nice if the resource compiler would recognize
+    symbolic constants.  For example, I would like to use the same
+    include file that I use in my C program in my program's .rc file.
+    The definitions in the include file could be used when defining
+    the input translation table, menus or dialog boxes.
+
+A:  This feature is already implemented.  If fact, the resource compiler
+    invokes the macro processor (P0) of the CMERGE compiler.
+
+    A word of caution:  RC does not do arithmetic.  You may say
+
+                #define  MAN    0
+                #define  WOMAN  1
+                #define  CHILD  MAN+WOMAN
+                "Child" MENU
+                  BEGIN
+                  MENUITEM "text", MAN
+                  MENUITEM "text", CHILD
+                  END
+
+    and line 6 will work; but line 7 will fail.  Because CHILD would
+    be expanded to 0+1, and the "+1" portion will be treated as an
+    invalid token.
+
+Q: The order of input translation statements seems to matter.  Is there a
+   general rule for this?  For example if in my input translation table
+   I have :
+
+        f1 = 'a'
+        f1 (Left-Shift) = 'b'
+        f1 (Left-Shift) = 'c'
+
+   B and C are never generated.
+
+A: The general rule is: put most-complicated expressions first in your
+   input translation table. So
+
+        f1 (Left-Shift) = 'b'
+        f1 (Left-Shift) = 'c'
+        f1 = 'a'
+   will work.
+ 
+Q: In the input translation table, I can't seem to get the numeric keypad
+   to work.  For example:
+
+     numpad-2 = '2'
+
+   doesn't work.
+
+A: Try using
+
+     down (numeric-lock*) = '2'
+
+   This represents the down-arrow key.
+
+  
+
+
+

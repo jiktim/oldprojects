@@ -1,0 +1,407 @@
+/*
+JMUSIC CSS
+VERY UGLY! FIX!
+
+for small brain newcomers who don't understand my terminology
+hero = main user
+*/
+
+
+/* body */
+
+body {
+  position: absolute;
+  width: 1013px;
+  height: 535px;
+  left: 0px;
+  top: 0px;
+
+  background: #000000;
+}
+
+/* Activity text */
+
+.activityText {
+  position: absolute;
+  width: 142px;
+  height: 34px;
+  left: 813.5px;
+  top: 6.5px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #FFFFFF;
+}
+
+
+/* text Home */
+
+.title {
+  position: absolute;
+  width: 250px;
+  height: 73px;
+  left: 66.5px;
+  top: -15.2px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 49px;
+
+  color: #FFFFFF;
+}
+
+
+/* team tag */
+
+.activityUsername {
+  position: absolute;
+  width: 86px;
+  height: 17px;
+  left: 857px;
+  top: 65.5px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 15px;
+
+  color: #FFFFFF;
+}
+
+
+/* album cover art */
+
+.coverArt {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  left: 10.5px;
+  top: 465.5px;
+
+  background: #313131;
+}
+
+
+/* welcome text big */
+
+.headerbody {
+  position: absolute;
+  /* width: 244px; */
+  height: 35px;
+  left: 72px;
+  top: 60px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #FFFFFF;
+}
+
+
+
+/* welcome paragraph */
+
+.paragraphBody {
+  position: absolute;
+  width: 627px;
+  height: 187px;
+  left: 72px;
+  top: 99px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+
+  color: #FFFFFF;
+}
+
+
+
+/* Activity Placeholder Avatar */
+/* REMINDER: MUST BE ROUND!!!! */
+/* YOU WILL GET FUCKED UP IF Y */
+/* YOU DON'T MAKE THE AVATAR R */
+/* OUND!!!!!!!!!!!!!!!!!!!!!!! */
+
+.activityAvatar {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 814px;
+  top: 48px;
+  border-radius: 50%;
+  background: #282828;
+}
+
+/* team username */
+
+.activityName {
+  position: absolute;
+  width: 85px;
+  height: 14px;
+  left: 859px;
+  top: 46px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #FFFFFF;
+}
+
+/* screenname */
+
+.heroUsername {
+  position: absolute;
+  width: 86px;
+  height: 17px;
+  left: 626.5px;
+  top: 41.5px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 15px;
+
+  color: #FFFFFF;
+}
+
+
+/* user placeholder avatar */
+/* MAKE IT ROUND!!!!!!!!!! */
+
+.heroAvatar {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 585.5px;
+  top: 21.5px;
+  border-radius: 50%;
+  background: #282828;
+}
+
+/* user name */
+
+.heroName {
+  position: absolute;
+  width: 85px;
+  height: 14px;
+  left: 626.5px;
+  top: 24.5px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #FFFFFF;
+}
+
+
+/* timestamp */
+
+.playBarRuntime {
+  position: absolute;
+  width: 86px;
+  height: 19px;
+  left: 191px;
+  top: 490px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+  color: #FFFFFF;
+}
+
+
+/* volume */
+
+.playBarVolume {
+  position: absolute;
+  width: 32px;
+  height: 16px;
+  left: 746px;
+  top: 500.5px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 11px;
+  line-height: 15px;
+
+  color: #FFFFFF;
+}
+
+/* play bar */
+
+.playBar {
+  position: absolute;
+  width: 669px;
+  height: 3px;
+  left: 191px;
+  top: 479px;
+
+  background: #272626;
+}
+
+/* forward button bar */
+
+#playBarfwdRect {
+  position: absolute;
+  width: 2px;
+  height: 13px;
+  left: 568px;
+  /* top: 489px;
+    background: #434343; */
+  top: 506.5px;
+}
+
+/* forward button triangle */
+
+#playBarfwdTriangle {
+  position: absolute;
+  width: 14px;
+  height: 15px;
+  left: 554px;
+  /* top: 488.5px;
+
+    background: #434343; */
+  top: 505.5px;
+  transform: rotate(180deg);
+}
+
+/* backward button bar */
+#playBarbckRect {
+  position: absolute;
+  width: 2px;
+  height: 13px;
+  left: 492px;
+  /* top: 489.5px; */
+  top: 506.5px;
+
+  background: #434343;
+}
+
+/* backward button triangle */
+#playBarbckTriangle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 494px;
+  top: 505.5px;
+
+  /* background: #434343;
+    transform: rotate(-90deg); */
+}
+
+
+/* music video */
+/* !!!!!!! WILL BE BLANK IF NO MUSIC VIDEO !!!!! */
+
+#musicVideo {
+  position: absolute;
+  width: 90px;
+  height: 48px;
+  left: 913px;
+  top: 476px;
+
+  background: #000000;
+  border: 1px solid #424040;
+  box-sizing: border-box;
+}
+
+/* volume bar */
+
+.volumeSlider {
+  position: absolute;
+  width: 114px;
+  height: 4px;
+  left: 746px;
+  top: 488px;
+
+  background: #434343;
+}
+
+/* sandwich toolbar (it's VERY ugly but prettier than you) */
+/*
+ORDER:
+
+333333
+
+222222
+
+111111
+*/
+
+.sandwich {
+  position: absolute;
+  width: 26px;
+  height: 2px;
+  left: 18.5px;
+  background: #454444;
+}
+
+.snd3 {
+  top: 36.5px;
+}
+
+.snd2 {
+  top: 46.5px;
+}
+
+.snd1 {
+  top: 57.5px;
+}
+
+/* down arrow to expand HERO */
+
+.heroExpand {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 709.5px;
+  top: 57.5px;
+}
+
+/* play button */
+
+.playButton {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 524px;
+  top: 500.5px;
+}
+
+
+
+/* down arrow play bar EXPANDABLE SIMILAR TO USER */
+
+.playBarExpand {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 871px;
+  top: 493px
+    /* background: #333333;
+    transform: rotate(-180deg); */
+}

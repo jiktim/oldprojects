@@ -1,0 +1,215 @@
+; Resource file template for Windows Chart.  Use the resource compiler
+; (rc.exe) to translate this file into a resource file.
+
+; Input translation table
+
+#include "chdefs.h"
+
+Chart   IT
+begin
+    options
+	stdchars
+	batchmouse
+
+    definitions
+	mousemove = mousecoords
+	mouse-button1^ = iMouseUp mousecoords
+	mouse-button1 = iMouseDown mousecoords
+end
+
+; Chart icon
+
+Chart   ICON    chart.ico
+
+; Chart cursor
+
+Arrow   CURSOR  arrow.cur
+
+; Main menu
+
+#include "menudefs.h"
+
+MenuBar MENU
+begin
+    menuitem    " Help ", miHelp
+
+    popup       " File "
+    begin
+	menuitem        "New Data", miNewData
+	menuitem        "Open...", miOpen
+	menuitem        "Close", miClose
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Save", miSave
+	menuitem        "Save As...", miSaveAs
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Page Setup...", miPageSetup
+	menuitem        "Print Data...", miPrintData
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Quit", miQuit
+    end
+
+    popup       " Edit "
+    begin
+	menuitem        "Can't Undo", miUndo
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Cut", miCut
+	menuitem        "Copy", miCopy
+	menuitem        "Paste", miPaste
+	menuitem        "Clear", miClear
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Paste and Link", miLink
+	menuitem        "Unlink...", miUnlink
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Show Clipboard", miShowClip
+    end
+
+    popup       " Data "
+    begin
+	menuitem        "Sequence...", miSequence
+	menuitem        "Date...", miDate
+	menuitem        "Text...", miText
+	menuitem        "Number...", miNumber
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Sort...", miSort
+	menuitem        "Analyze...", miAnalyze
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "List...", miList
+    end
+
+    popup       " Gallery "
+    begin
+	menuitem        "Area...", miArea
+	menuitem        "Bar...", miBar
+	menuitem        "Column...", miColumn
+	menuitem        "Line...", miLine
+	menuitem        "Pie...", miPie
+	menuitem        "Scatter...", miScatter
+	menuitem        "Combination...", miCombination
+    end
+
+    popup       " Chart "
+    begin
+	menuitem        "Main Chart Type...", miMainType
+	menuitem        "Overlay Chart Type...", miOverlayType
+	menuitem        "Axes...", miAxes
+	menuitem        "Add Legend", miAddLegend
+	menuitem        "Add Arrow", miAddArrow
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Select Chart", miSelChart
+	menuitem        "Select Plot Area", miSelPlot
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Redraw Now", miRedrawNow
+	menuitem        "Automatic Redraw", miAutoRedraw, CHECKED
+	menuitem        "Manual Redraw", miManualRedraw
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Show Chart Window", miShowChart
+    end
+
+    popup       " Format "
+    begin
+	menuitem        "Categories...", miFmtCategories
+	menuitem        "Values...", miFmtValues
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Patterns...", miFmtPatterns
+	menuitem        " ", miNull, INACTIVE
+	menuitem        "Legend...", miFmtLegend
+	menuitem        "Text...", miFmtText
+	menuitem        "Axis...", miFmtAxis
+	menuitem        "Main Chart...", miFmtMain
+	menuitem        "Overlay Chart...", miFmtOverlay
+    end
+
+end
+
+; Dialog boxes
+
+#include "dlgdefs.h"
+
+idiSequence     DIALOG  58, 25, 187, 112
+begin
+    ltext "Sequence Series", iddNull, 5, 5, 60, 12
+    ltext "Series Name:", iddNull, 5, 25, 48, 12
+    edititem iddSeqSeries, 66, 25, 116, 12
+    ltext "Category Name:", iddNull, 5, 35, 56, 12
+    edititem iddSeqCategory, 66, 35, 116, 12
+    ltext "Value Name:", iddNull, 5, 45, 44, 12
+    edititem iddSeqValue, 66, 45, 116, 12
+    ltext "First Category:", iddNull, 5, 65, 60, 12
+    edititem iddSeqFirst, 66, 65, 116, 12
+    ltext "Increment Each Category By", iddNull, 5, 75, 104, 12
+    edititem iddSeqIncrement, 142, 75, 40, 12
+    pushbutton "Ok", iddSeqOk, 96, 95, 36, 12
+    pushbutton "Cancel", iddSeqCancel, 146, 95, 36, 12
+end
+
+idiDate         DIALOG  58, 19, 187, 124
+begin
+    ltext "Date Series", iddNull, 5, 5, 44, 12
+    ltext "Series Name:", iddNull, 5, 25, 48, 12
+    edititem iddDatSeries, 66, 25, 116, 12
+    ltext "Category Name:", iddNull, 5, 35, 56, 12
+    edititem iddDatCategory, 66, 35, 116, 12
+    ltext "Value Name:", iddNull, 5, 45, 44, 12
+    edititem iddDatValue, 66, 45, 116, 12
+    ltext "First Category:", iddNull, 5, 65, 60, 12
+    edititem iddDatFirst, 66, 65, 116, 12
+    ltext "Increment Each Category By", iddNull, 5, 75, 104, 12
+    edititem iddDatIncrement, 142, 75, 40, 12
+    radiobutton "Years", iddDatYears, 5, 87, 30, 12
+    radiobutton "Months", iddDatMonths, 50, 87, 34, 12
+    radiobutton "Days", iddDatDays, 99, 87, 26, 12
+    radiobutton "Weekdays", iddDatWeekdays, 140, 87, 42, 12
+    pushbutton "Ok", iddDatOk, 96, 107, 36, 12
+    pushbutton "Cancel", iddDatCancel, 146, 107, 36, 12
+end
+
+idiText         DIALOG  58, 40, 187, 82
+begin
+    ltext "Text Series", iddNull, 5, 5, 44, 12
+    ltext "Series Name:", iddNull, 5, 25, 48, 12
+    edititem iddTxtSeries, 66, 25, 116, 12
+    ltext "Category Name:", iddNull, 5, 35, 56, 12
+    edititem iddTxtCategory, 66, 35, 116, 12
+    ltext "Value Name:", iddNull, 5, 45, 44, 12
+    edititem iddTxtValue, 66, 45, 116, 12
+    pushbutton "Ok", iddTxtOk, 96, 65, 36, 12
+    pushbutton "Cancel", iddTxtCancel, 146, 65, 36, 12
+end
+
+idiNumber       DIALOG  58, 40, 187, 82
+begin
+    ltext "Number Series", iddNull, 5, 5, 52, 12
+    ltext "Series Name:", iddNull, 5, 25, 48, 12
+    edititem iddDatSeries, 66, 25, 116, 12
+    ltext "Category Name:", iddNull, 5, 35, 56, 12
+    edititem iddDatCategory, 66, 35, 116, 12
+    ltext "Value Name:", iddNull, 5, 45, 44, 12
+    edititem iddDatValue, 66, 45, 116, 12
+    pushbutton "Ok", iddDatOk, 96, 65, 36, 12
+    pushbutton "Cancel", iddDatCancel, 146, 65, 36, 12
+end
+
+idiSort         DIALOG  103, 30, 96, 102
+begin
+    ltext "Sort", iddNull, 5, 5, 16, 12
+    radiobutton "By Category", iddSrtCategory, 5, 25, 54, 12
+    radiobutton "By Value", iddSrtValue, 5, 35, 42, 12
+    radiobutton "In Ascending Order", iddSrtAscend, 5, 55, 82, 12
+    radiobutton "In Descending Order", iddSrtDescend, 5, 65, 86, 12
+    pushbutton "Ok", iddSrtOk, 5, 85, 36, 12
+    pushbutton "Cancel", iddSrtCancel, 55, 85, 36, 12
+end
+
+idiAnalyze      DIALOG  103, 20, 96, 122
+begin
+    ltext "Analyze", iddNull, 5, 5, 28, 12
+    radiobutton "Average", iddAnaAverage, 5, 25, 38, 12
+    radiobutton "Trend", iddAnaTrend, 5, 35, 30, 12
+    radiobutton "Growth", iddAnaGrowth, 5, 45, 34, 12
+    radiobutton "Cumulative Sum", iddAnaSum, 5, 55, 66, 12
+    radiobutton "Difference", iddAnaDiff, 5, 65, 50, 12
+    radiobutton "Percent", iddAnaPercent, 5, 75, 38, 12
+    radiobutton "Statistics", iddAnaStats, 5, 85, 50, 12
+    pushbutton "Ok", iddAnaOk, 5, 105, 36, 12
+    pushbutton "Cancel", iddAnaCancel, 55, 105, 36, 12
+end

@@ -1,0 +1,9 @@
+NAME    CHART
+DESCRIPTION     Experimental User Interface
+
+CODE    MOVEABLE
+DATA    MOVEABLE MULTIPLE
+
+HEAPSIZE    4096
+
+LOADPROC    ChartLoad

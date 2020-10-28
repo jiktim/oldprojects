@@ -1,0 +1,103 @@
+graph  IT
+BEGIN
+#include "graph.it"
+END
+
+graph   cursor  graph.CUR
+graph   icon    graph.ICO
+tlbr    cursor  tlbr.cur
+blur    cursor  blur.cur
+lr      cursor  lr.cur
+tb      cursor  tb.cur
+move    cursor  move.cur
+box     cursor  box.cur
+
+MenuBar MENU
+    begin
+    popup   "Gallery"
+    begin
+        menuitem    "Column", COLUMN, CHECKED
+        menuitem    "Bar", BAR
+    end
+    popup   "Data"
+    begin
+        menuitem    "Increment", INCREMENT
+        menuitem    "Decrement", DECREMENT
+    end
+    popup   "Size"
+    begin
+        menuitem    "Clip", CLIP, CHECKED
+        menuitem    "Scale", SCALE
+        menuitem    " ",, INACTIVE
+        menuitem    "Set ...", SETSIZE
+    end
+    popup   "Debug"
+    begin
+        menuitem    "Debug 1", DEBUGMI1
+        menuitem    "Debug 2", DEBUGMI2
+        menuitem    "Debug 3", DEBUGMI3
+        menuitem    "Debug 4", DEBUGMI4
+        menuitem    "Debug 5", DEBUGMI5
+        menuitem    "Debug  ...", DEBUGDLG
+    end
+end
+
+OkCancel MENU
+begin
+    menuitem    "Ok", OK
+    menuitem    "Cancel", CANCEL
+end
+
+IDIFIGSIZE dialog 5,5,150,90
+caption "Figure Size"
+menuname OkCancel
+begin
+    ltext "width:"   ,  CMNTWIDTH,   2,   2, 40, 12
+    ltext "height:"  ,  CMNTHT   ,   2,  17, 40, 12
+    ltext "x origin:",  CMNTXORG ,   2,  32, 40, 12
+    ltext "y origin:",  CMNTYORT ,   2,  47, 40, 12
+    ltext "# of bars:", CMNTCITEMS , 2,  62, 40, 12
+    editctl "width:",   WIDTH, ELEFT, 44,  2, 50, 12
+    editctl "height:", HEIGHT, ELEFT, 44, 17, 50, 12
+    edititem XORIGIN, 44, 32, 50, 12
+    edititem YORIGIN, 44, 47, 50, 12
+    edititem CITEMS , 44, 62, 50, 12
+end
+
+IDIDEBUG dialog 50,5,210,80
+caption "Debug Dialog"
+menuname OkCancel
+begin
+    ltext "t1:", DBGLTXT1, 2,   2, 16, 12
+    ltext "t2:", DBGLTXT2, 2,  17, 16, 12
+    ltext "t3:", DBGLTXT3, 2,  32, 16, 12
+    ltext "t4:", DBGLTXT4, 2,  47, 16, 12
+    ltext "t5:", DBGLTXT5, 2,  62, 16, 12
+    edititem DBGTXT1, 20,  2, 70, 12
+    edititem DBGTXT2, 20, 17, 70, 12
+    edititem DBGTXT3, 20, 32, 70, 12
+    edititem DBGTXT4, 20, 47, 70, 12
+    edititem DBGTXT5, 20, 62, 70, 12
+    pushbutton  "pb1" , DBGPB1,  95,  2,  20, 12
+    pushbutton  "pb2" , DBGPB2,  95, 17,  20, 12
+    pushbutton  "pb3" , DBGPB3,  95, 32,  20, 12
+    pushbutton  "pb4" , DBGPB4,  95, 47,  20, 12
+    pushbutton  "pb5" , DBGPB5,  95, 62,  20, 12
+    radiobutton "rb1:", DBGRB1, 120,  2,  40, 12
+    radiobutton "rb2:", DBGRB2, 120, 17,  40, 12
+    radiobutton "rb3:", DBGRB3, 120, 32,  40, 12
+    radiobutton "rb4:", DBGRB4, 120, 47,  40, 12
+    radiobutton "rb5:", DBGRB5, 120, 62,  40, 12
+    checkbox    "cb1:", DBGCB1, 165,  2,  40, 12
+    checkbox    "cb2:", DBGCB2, 165, 17,  40, 12
+    checkbox    "cb3:", DBGCB3, 165, 32,  40, 12
+    checkbox    "cb4:", DBGCB4, 165, 47,  40, 12
+    checkbox    "cb5:", DBGCB5, 165, 62,  40, 12
+end
+
+IDIQUIT dialog  10, 10, 140, 35
+begin
+    ltext   "Destroy this window?",QUITTXT,12,2,116,12
+    pushbutton  "Yes", YES, 18, 16, 28, 14
+    pushbutton  "No", NO, 50, 16, 28, 14
+end

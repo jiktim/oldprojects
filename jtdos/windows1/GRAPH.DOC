@@ -1,0 +1,64 @@
+Oct 16, 1984    16:37
+
+
+MICROSOFT Windows Application Mockups: Chart & Graph
+
+
+Disclaimer: no warranty is made or implied about the correctness
+of this documentation or the code it describes.  These are mockups
+of possible user interfaces and implementation techniques and do
+NOT represent any commitment on the part of MICROSOFT to
+produce and/or deliver products and applications that use these
+models.
+
+
+This document is a brief description of two application mockups for the
+MICROSOFT Windows environment.
+
+Each top level window instance contains children windows that display
+either a figure or a data set.  The data sets do NOT determine the shape of
+the figure.
+
+Graph is an overlapping child model.  It also is a test bed for some user
+interface and debugging experiments.
+
+
+GRAPH
+
+The figure may be moved using mouse button 1.  The figure may be
+stretched by pointing near the rectangle enclosing it and using button 1.
+
+The figure window and the data set windows may be moved using control
+plus mouse button 1 or mouse button 2.  The figure window and data set
+windows may be stretched by pointing near their edges and using control
+plus mouse button 1 or mouse button 2.
+
+The GALLERY menu allows the form of the figure to be changed.
+
+The number of bars may be changed using the DATA menu, or the dialog box
+displayed from the SIZE menu or by typing "+" or "-" after clicking in the
+figure window.
+
+If the property SCALE is set, then the size of the figure is determined by its
+enclosing window.
+
+THe debug menu toggles the display of 5 small text display menus that are
+used for debugging.  There is also a debug dialog box with more extensive
+options.
+
+
+CHART
+
+The figure window is the size of the top level window.
+
+There is a vetical split bar in the lower scroll bar.  Drag this spliter bar
+horizontally to expose a column that displays data sets.  Drag all the way to
+the right to remove data set display.
+
+With data sets displayed, horizontal splitter bars in the right scroll bar
+allow the size of the data sets to be changed.  Dragging the topmost splitter
+bar will expose new data sets.
+
+Bug: the mouse is NOT tracked outside the CHART window.  So the mouse must
+be dragged within the window and released within the window for the
+events to be noticed.

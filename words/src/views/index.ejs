@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+  <link href="/public/css/index.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="topnav">
+    <a href="/">
+      <h2> words@jik &gt </h2>
+    </a>
+    <a href="/">
+      <h3> Home </h3>
+    </a>
+    <a>
+      <h3> Tech </h3>
+    </a>
+    <a>
+      <h3> Opinion </h3>
+    </a>
+    <a>
+      <h3> For You </h3>
+    </a>
+  </div>
+  <div class="lower">
+    <%# this is very ugly. fuck off. %> 
+    <div class="bigHeadline">
+      <% let headlines = articles.getLatestArticles()[1]; %>
+      <% let bigHeadlineName = articles.getLatestArticles()[0]; %>
+      <% let bigHeadlineRawJSON = articles.fetchRecentArticleJSON(bigHeadlineName); %>
+      <% let bigHeadline = JSON.parse(bigHeadlineRawJSON); %>
+      <a href="/read/<%- bigHeadline.parent %>/<%- (bigHeadline.article).replace(".md", "") %>">
+        <div class="imgBH">
+          <img src="<%- bigHeadline.image; %>" class="hhh">
+        </div>
+      </a>
+      <div class="rightText">
+        <a href="/read/<%- bigHeadline.parent %>/<%- (bigHeadline.article).replace(".md", "") %>" class="aEsc">
+          <h1><%= bigHeadline.title; %></h1>
+        </a>
+        <p><%= bigHeadline.subtitle; %></p>
+      </div>
+    </div>
+    <div class="safeSpace">
+      <% if (!bigHeadline.photo_credit == "") { %>
+      <small class="attribution"><%= bigHeadline.photo_credit; %></small>
+      <% } %>
+    </div>
+    <%# I <3 COPY PASTING CODE %> 
+    <%# This is what happens when you let me actually write code instead of copypasting from stackoverflow %> 
+    <% if(headlines.length > 1) { %>
+    <div class="otherArticles">
+      <div class="smallArticle">
+        <% let firstArticleRAW = articles.fetchRecentArticleJSON(headlines[1]); %>
+        <% let firstArticle = JSON.parse(firstArticleRAW); %>
+        <a href="/read/<%- firstArticle.parent %>/<%- (firstArticle.article).replace(".md", "") %>">
+          <img src="<%- firstArticle.image; %>" class="smArImg">
+        </a>
+        <% if(!firstArticle.photo_credit == "") { %>
+        <small class="subAttri"><%= firstArticle.photo_credit; %></small>
+        <% } %>
+        <a href="/read/<%- firstArticle.parent %>/<%- (firstArticle.article).replace(".md", "") %>" class="aEsc">
+          <h3 class="shh sbh"><%= firstArticle.title; %></h3>
+        </a>
+        <p class="shh gdw"><%= firstArticle.subtitle; %></p>
+      </div>
+      <% if(headlines.length > 2) { %>
+      <div class="smallArticle rl">
+        <% let secondArticleRAW = articles.fetchRecentArticleJSON(headlines[2]); %>
+        <% let secondArticle = JSON.parse(secondArticleRAW); %>
+        <a href="/read/<%- secondArticle.parent %>/<%- (secondArticle.article).replace(".md", "") %>">
+          <img src="<%- secondArticle.image; %>" class="smArImg">
+        </a>
+        <% if(!secondArticle.photo_credit == "") { %>
+        <small class="subAttri"><%= secondArticle.photo_credit; %></small>
+        <% } %>
+        <a href="/read/<%- secondArticle.parent %>/<%- (secondArticle.article).replace(".md", "") %>" class="aEsc">
+          <h3 class="shh sbh"><%= secondArticle.title; %></h3>
+        </a>
+        <p class="shh gdw"><%= secondArticle.subtitle; %></p>
+      </div>
+      <% if(headlines.length > 3) { %>
+      <div class="smallArticle rl">
+        <% let thirdArticleRAW = articles.fetchRecentArticleJSON(headlines[3]); %>
+        <% let thirdArticle = JSON.parse(thirdArticleRAW); %>
+        <a href="/read/<%- thirdArticle.parent %>/<%- (thirdArticle.article).replace(".md", "") %>">
+          <img src="<%- thirdArticle.image; %>" class="smArImg">
+        </a>
+        <% if(!thirdArticle.photo_credit == "") { %>
+        <small class="subAttri"><%= thirdArticle.photo_credit; %></small>
+         <% } %>
+         <a href="/read/<%- thirdArticle.parent %>/<%- (thirdArticle.article).replace(".md", "") %>" class="aEsc">
+          <h3 class="shh sbh"><%= thirdArticle.title; %></h3>
+        </a>
+        <p class="shh gdw"><%= thirdArticle.subtitle; %></p>
+      </div>
+      <% } %>
+      <% } %>
+    </div>
+    <% } %>
+    <div class="footer"> 
+      <a href="https://jikt.im" class="flex">
+        <img src="/public/jik.svg" class="ftIMG">
+        <p>© 2020, JIK LLC</p>
+      </a>
+      <div class="ftR">
+        <a href="/contact">
+          <p>Contact Us</p>
+        </a>
+        <a href="/legal">
+          <p>Legal</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

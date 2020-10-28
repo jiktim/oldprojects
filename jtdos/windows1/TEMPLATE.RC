@@ -1,0 +1,17 @@
+template  it  ; Template Input Translation Table
+ begin
+   OPTIONS
+    StdChars
+    BatchMouse
+ end
+template  cursor  TEMPLATE.CUR
+template  icon    TEMPLATE.ICO
+template menu
+begin
+    MENUITEM "Alpha", 0
+    POPUP "Beta"
+        begin
+            MENUITEM "One", 0
+            MENUITEM "Two", 0
+        end
+end

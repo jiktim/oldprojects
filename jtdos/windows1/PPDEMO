@@ -1,0 +1,13 @@
+ppdemo.res: ppdemo.rc ppdemo.ico
+    rc ppdemo.rc
+
+ppdemo.dfo: ppdemo.def
+    mc ppdemo
+
+ppdemo.obj: ppdemo.c
+   cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib ppdemo.c
+
+ppdemo.exe:   ppdemo.dfo ppdemo.obj
+    link ppdemo.dfo ppdemo.obj,ppdemo,ppdemo/map,\lib\pushpull \lib\kernel \lib\windows \lib\gdi \lib\swlibc
+    mapsym ppdemo
+    ne ppdemo

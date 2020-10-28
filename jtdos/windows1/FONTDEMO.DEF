@@ -1,0 +1,10 @@
+NAME    FontDemo
+DESCRIPTION Sample font manipulation code
+
+CODE    FIXED
+DATA    MULTIPLE FIXED
+
+HEAPSIZE    2048
+
+LOADPROC
+    TemplateLoad

@@ -1,0 +1,59 @@
+<nav class="navbar is-transparent gradient">
+  <div class="navbar-brand">
+    <p class="navbar-item">
+      <img src="<%= user.avatar %>" alt="User Avatar" class="avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+    </p>
+    <p class="navbar-item" style="padding-left: 0px !important;"><%= user.username %>#<%= user.discriminator %></p>
+    <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </div>
+  <div class="navbar-start"></div>
+  <div id="navbarMenuHeroA" class="navbar-menu">
+    <div class="navbar-end">
+      <a href="#general" class="navbar-item">
+        <span class="nav-icon"><i class="fas fa-robot"></i></span>
+        <span>General</span>
+      </a>
+      <a href="#automod" class="navbar-item">
+        <span class="nav-icon"><i class="fas fa-hammer"></i></span>
+        <span>Automod</span>
+      </a>
+      <a href="#features" class="navbar-item">
+        <span class="nav-icon"><i class="fas fa-magic"></i></span>
+        <span>Features</span>
+      </a>
+      <a href="#logging" class="navbar-item">
+        <span class="nav-icon"><i class="fas fa-scroll"></i></span>
+        <span>Logging</span>
+      </a>
+      <a href="#roles" class="navbar-item">
+        <span class="nav-icon"><i class="fas fa-user-tag"></i></span>
+        <span>Roles</span>
+      </a>
+      <div class="navbar-item">
+        <div class="field has-addons">
+          <p class="control">
+            <button class="button is-dark">
+              <span class="icon is-small">
+                <i class="fas fa-home"></i>
+              </span>
+              <a href="/servers/" class="has-text-white">Back to servers</a>
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-danger">
+              <span class="icon is-small">
+                <a href="/logout/" class="has-text-white">
+                  <i class="fas fa-power-off"></i>
+                </a>
+              </span>
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

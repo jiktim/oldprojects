@@ -1,0 +1,13 @@
+template.dfo: template.def
+    mc template
+
+template.res: template.rc template.cur template.ico
+    rc template.rc
+
+template.obj: template.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib template.c
+
+template.exe: template.dfo template.obj
+    link template.dfo template,,/map/li,\lib\windows \lib\gdi \lib\kernel \lib\swlibc
+    mapsym template
+    ne template

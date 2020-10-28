@@ -1,0 +1,35 @@
+{
+	"name": "njs-fetch",
+	"version": "1.1.1-rc.4",
+	"description": "fetch for node.js",
+	"main": "./dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "eslint --fix . && babel index.js -d dist "
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/libllc/njs-fetch.git"
+	},
+	"keywords": [
+		"node",
+		"fetch",
+		"request"
+	],
+	"author": "cth103",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/libllc/njs-fetch/issues"
+	},
+	"homepage": "https://github.com/libllc/njs-fetch#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"eslint-config-defaults": "^9.0.0",
+		"@babel/cli": "^7.0.0-rc.1",
+		"@babel/core": "^7.0.0-rc.1",
+		"@babel/node": "^7.0.0-rc.1",
+		"@babel/preset-env": "^7.5.5",
+		"@isaac.frontend/eslint-config-es6": "^3.0.0",
+		"eslint-plugin-import": "^2.18.2"
+	}
+}

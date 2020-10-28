@@ -1,0 +1,7 @@
+{
+  "delay": "4000",
+  "exec": "node ./src/app.js",
+  "ext": "js",
+  "ignore": ["node_modules"],
+  "watch": ["src"]
+}

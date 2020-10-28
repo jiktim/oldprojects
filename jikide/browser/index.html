@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome - jikIDE</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto+Mono&display=swap" rel="stylesheet">
+	<style>
+	body {
+		font-family: "Roboto Mono", monospace;
+	}
+	
+	#wordMark {
+		font-family: "Comfortaa", cursive;
+	}
+	</style>
+	<script>
+	let electron = require("electron");
+	
+	openProject = () => {
+		electron.ipcRenderer.send("open-project", "request");
+	}
+	
+	openFile = () => {
+		electron.ipcRenderer.send("open-file", "request");
+	}
+	
+	newFile = () => {
+		electron.ipcRenderer.send("new-file", "request");
+	}
+	
+	window.onload = () => {
+		document.getElementById("openFile").addEventListener("click", openFile);
+		document.getElementById("newFile").addEventListener("click", newFile);
+		document.getElementById("openProject").addEventListener("click", openProject);
+	}
+	</script>
+  </head>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' app: 'unsafe-eval'; object-src 'self' app:;">
+  <body>
+		<section class="section">
+			<div class="container has-text-centered">
+				<h2 class="subtitle">
+					welcome to
+				</h2>
+				<h1 class="title" id="wordMark">
+					jikIDE
+				</h1>
+				<h3 class="subtitle">
+					<button class="button is-dark is-rounded is-normal" id="openProject">Open Project</button>
+					<br>
+					<button class="button is-dark is-rounded is-normal" id="openFile">Open File</button>
+					<br>
+					<button class="button is-dark is-rounded is-normal" id="newFile">New File</button>
+				</h2>
+			</div>
+		</section>
+  </body>
+</html>

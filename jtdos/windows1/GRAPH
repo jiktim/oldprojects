@@ -1,0 +1,27 @@
+graph.dfo: graph.def
+    mc graph
+
+graph.res: graph.rci graph.cur graph.it graph.ico
+    menuid graph.rci graph.rc
+    rc graph.rc
+
+graph.obj: graph.c menu.h graph.h events.h
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib graph.c
+
+figure.obj: figure.c menu.h graph.h events.h
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib figure.c
+
+gseries.obj: gseries.c graph.h events.h menu.h
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib gseries.c
+
+dialog.obj: dialog.c
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib dialog.c
+
+vsubs1.obj: vsubs1.c graph.h
+    cc -d -c -Asnwa -Gsw -Oas -Zped -I c:\lib vsubs1.c
+
+graph.exe: graph.dfo graph.obj figure.obj gseries.obj dialog.obj vsubs1.obj
+    link graph.dfo graph figure gseries dialog vsubs1,graph,graph/map,\lib\windows \lib\gdi \lib\kernel \lib\swlibc
+    mapsym  graph
+    ne graph
+

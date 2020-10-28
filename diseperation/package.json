@@ -1,0 +1,33 @@
+{
+  "name": "diseparation",
+  "version": "1.0.0",
+  "description": "View an entire tree of your Discord friends list, going as far back as possible.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "tsc && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiktim/Diseparation.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "author": "Alex P, cthpw103",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jiktim/Diseparation/issues"
+  },
+  "homepage": "https://github.com/jiktim/Diseparation#readme",
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mongodb": "^3.5.18",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "journl": "^1.0.6",
+    "mongodb": "^3.5.7",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.3"
+  }
+}
