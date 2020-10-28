@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.JSS-misc-blue {
+  color: blue;
+}
+
+nav.JSS-navigationBar,
+body#JSS-autoEverything nav {
+  text-align: left;
+  color: white;
+  padding: 6px;
+  background: black;
+}
+
+nav.JSS-navigationBar .JSS-navigationHeader,
+body#JSS-autoEverything nav h3,
+body#JSS-autoEverything nav h4,
+body#JSS-autoEverything nav h5 {
+  margin-right: 10px;
+}
+
+nav.JSS-navigationBar *,
+body#JSS-autoEverything nav * {
+  margin-bottom: 3px;
+  margin-top: 3px;
+  display: inline-block;
+}
+
+hr.JSS-navigationBarLine,
+body#JSS-autoEverything nav + hr{
+  background-color: #D60003;
+  margin: 0;
+  border: 0;
+  height: 5px;
+}
+
+nav.JSS-navigationBar a,
+body#JSS-autoEverything nav a {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+nav.JSS-centeredNavigationBar {
+  text-align: center;
+}
+
+nav.JSS-navigationBar a:hover,
+body#JSS-autoEverything nav a:hover {
+  color: #bfbfbf;
+}
+
+nav.JSS-navigationBar a:not(:last-of-type),
+body#JSS-autoEverything nav a:not(:last-of-type) {
+  margin-right: 6px;
+}
+
+.JSS-misc-block {
+  display: block;
+}
+
+.JSS-misc-blockChildren > * {
+  display: block;
+}
+
+.JSS-misc-inlineBlock {
+  display: inline-block;
+}
+
+.JSS-misc-inlineBlockChildren > * {
+  display: inline-block;
+}
+
+body#JSS-auto,
+body#JSS-autoEverything {
+  font-family: Roboto;
+  text-align: center;
+  margin: 0;
+}
+
+body#JSS-nocenter {
+  text-align: initial;
+  font-family: Roboto;
+  margin: 0;
+}
+
+a.JSS-buttonLink,
+button.JSS-buttonLink {
+  background: #dddddd;
+  border: 1px #808080 solid;
+  border-radius: 3px;
+  text-align: center;
+  padding: 2px;
+  margin: 2px;
+  text-decoration: none;
+}
+
+a.JSS-buttonLink-morePadding,
+button.JSS-buttonLink-morePadding {
+  padding: 4px;
+}
+
+a.JSS-buttonLink {
+  color: initial; /* overrideable with id's */
+}
+ 
+@media (max-width: 360px) {
+  nav.JSS-verticalMobileDisplay h3,
+  nav.JSS-verticalMobileDisplay h4,
+  nav.JSS-verticalMobileDisplay h5,
+  nav.JSS-verticalMobileDisplay .JSS-navigationHeader,
+  nav.JSS-verticalMobileDisplay a {
+    display: block !important;
+  }
+  
+  nav.JSS-verticalMobileDisplay {
+    text-align: center;
+    column-count: 2;
+  }
+}
