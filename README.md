@@ -1,10 +1,8 @@
 # Jiktim Project Archive
-These are various jiktim (and friends) projects that either were never completed or are no longer in use.
-Likely functional projects are bolded. Things with versions next to them either have been updated or have future plans to be rewritten.
+These are various jiktim projects that either were never completed or are no longer in use. Things with versions next to them either have been updated or have future plans to be rewritten.
 
 # License
 Licensing varies. View the LICENSE in each folder. If something lacks a license, assume it's licensed under MIT or unlicensed, depending on the content.
-
 
 Table of Contents
 =================
@@ -34,6 +32,8 @@ JikPizza: A Discord bot that reverse engineered the Dominos Pizza API to order p
 
 Megumin: The Discord bot that succeded FireBot and Nep in 2018. Killed off due to disinterest and anger. Succeded by Chino, Hibiki (v2), and the Hibiki project.
 
+Megumin (Sol's Megumin): The Discord bot that predates Ram but also co-existed with Sol's Hibiki...christ.
+
 Nep: The succesor to FireBot in 2017. Lasted a whopping 9 days until it was renamed to Megumin.
 
 Ram: The succesor to Chi's Hibiki in October 2018. Killed off due to lack of interest.
@@ -52,12 +52,14 @@ Miscellaneous projects that don't fit into any category.
   - jikIDE
   - jimmyhax
   - jtDOS
+  - StupidSkype
 
 ### Web Projects
 Projects that mostly focus on web interfaces or websites.
   - agadir.vote
   - jMusic
   - lolihook
+  - JSS
   - voteresolved
   - words@jik
 
