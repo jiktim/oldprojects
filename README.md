@@ -62,7 +62,6 @@ Projects that mostly focus on web interfaces or websites.
 
 Projects that have been lost or misplaced.
 
-- C# joke ransomware from 2019
 - tBot
 - Sol-Nep
 - Sol-Nadeshiko
