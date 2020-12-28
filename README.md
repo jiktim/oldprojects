@@ -16,6 +16,7 @@ Projects that primarily interacted with the Discord API.
 - Diseperation
 - EW1Bot
 - FireBot
+- GLaDOS
 - Hibiki (v2)
 - HuskyBot (v1 & v2)
 - jAuth
@@ -23,6 +24,7 @@ Projects that primarily interacted with the Discord API.
 - JikPizza
 - Megumin
 - Nep
+- PotahaBot
 - Sol-Hibiki
 - Sol-Megumin
 - Sol-Ram
