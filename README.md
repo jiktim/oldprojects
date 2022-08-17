@@ -24,7 +24,7 @@ Projects that primarily interacted with the Discord API.
 - JikPizza
 - Megumin
 - Nep
-- PotahaBot
+- Sol-bot
 - Sol-Hibiki
 - Sol-Megumin
 - Sol-Ram
@@ -67,4 +67,3 @@ Projects that have been lost or misplaced.
 - tBot
 - Sol-Nep
 - Sol-Nadeshiko
-- Sol's various selfbots

@@ -35,5 +35,5 @@ To self-host Ram, you must have the following:
 - To run the bot, use either `node bot` or `pm2 start ./pm2.json` (recommended if you're using an VPS).
 
 # Author
-**Ram** © [@TishDev](https://github.com/smolespi). Released under the [GNU](https://github.com/smolespi/Ram/blob/master/LICENSE) license.<br>
-Authored by TishDev, maintained by smolespi.
+**Ram** © [@solelychloe](https://github.com/solelychloe). Released under the [GNU](https://github.com/smolespi/Ram/blob/master/LICENSE) license.<br>
+Authored by solelychloe, maintained by smolespi.

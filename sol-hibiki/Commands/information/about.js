@@ -22,7 +22,7 @@ module.exports = class About extends Command {
         const { duration } = this.client.modules.Util;
         const embed = new MessageEmbed()
             .setColor(this.client.color)
-            .setFooter('© TishyXT#6814')
+            .setFooter('© solely#6814')
             .setTitle(`Information about ${this.client.user.username}`, true)
             .addField('Uptime', duration(this.client.uptime), true)
             .addField('Repository', 'https://github.com/HibikiTeam/Hibiki', true)

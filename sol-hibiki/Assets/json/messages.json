@@ -1,4 +1,4 @@
 {
     "activities": ["type <prefix>help | on <servers> servers", "on <servers> servers | type <prefix>help", "currently on <servers> servers"],
-    "blacklist": "**<user>**, it seems like you've been blacklisted from using **<bot>**. DM **TishyXT#6814** if you want to appeal your blacklist."
+    "blacklist": "**<user>**, it seems like you've been blacklisted from using **<bot>**. DM **solely#6814** if you want to appeal your blacklist."
 }

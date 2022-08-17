@@ -3,7 +3,7 @@ var client = new Discordie();
 var prefix = "p-"
 var ownerid = "219826813554130944"
 var adminRoleName = "Owners";
-client.User.setGame("coding w/ Potaha | " + prefix + "help ")
+client.User.setGame("coding w/ solely | " + prefix + "help ")
 client.User.setStatus("dnd")
 client.connect({ token: "replace diz shit with ur token" });
 

@@ -309,7 +309,7 @@ sentMessage.edit("NO RD");
 sentMessage.edit("NO RD!");
 sentMessage.edit("NO RD!!"); }) 
 }
-if (e.message.content.startsWith("tishko")) {
+if (e.message.content.startsWith("solelyko")) {
 	client.Messages.deleteMessage(e.message);
 	e.message.sendMessage("bad")
 }
