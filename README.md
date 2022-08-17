@@ -24,10 +24,11 @@ Projects that primarily interacted with the Discord API.
 - JikPizza
 - Megumin
 - Nep
-- Sol-bot
-- Sol-Hibiki
-- Sol-Megumin
-- Sol-Ram
+- sol-bot
+- solely-Bot
+- sol-Hibiki
+- sol-Megumin
+- sol-Ram
 
 ### Libraries & Utilities
 
