@@ -687,23 +687,23 @@ if(e.message.content.startsWith("*base64 encode")) {
 
 //blacklisted words
 /*
-if(e.message.content.startsWith("tishko")) {
+if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-if(e.message.content.startsWith("Tishko")) {
+if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-  if(e.message.content.startsWith("TiSHKO")) {
+  if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-  if(e.message.content.startsWith("TISHKO")) {
+  if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-    if(e.message.content.startsWith("TiShKo")) {
+    if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }

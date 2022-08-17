@@ -35,5 +35,5 @@ Hibiki is an multi-powered Discord bot for your needs.
 - And finally, run the bot, using either `node bot` or `pm2 start ./pm2.json`.
 
 # Author
-**Hibiki** © [@TishDev](https://github.com/TishDev). Released under the [GNU](https://github.com/HibikiTeam/Hibiki/blob/master/LICENSE) license.<br>
-Authored and maintained by TishDev. 
+**Hibiki** © [@solelychloe](https://github.com/solelychloe). Released under the [GNU](https://github.com/HibikiTeam/Hibiki/blob/master/LICENSE) license.<br>
+Authored and maintained by solelychloe. 

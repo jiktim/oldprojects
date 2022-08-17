@@ -442,18 +442,18 @@ sentMessage.edit("NO RD!!"); })
 
 
 //blacklisted words
-if(e.message.content.startsWith("tishko")) {
+if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-if(e.message.content.startsWith("Tishko")) {
+if(e.message.content.startsWith("solelyko")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-  if(e.message.content.startsWith("TiSHKO")) {
+  if(e.message.content.startsWith("solelyKO")) {
 	  client.Messages.deleteMessage(e.message); 
   }
-  if(e.message.content.startsWith("TISHKO")) {
+  if(e.message.content.startsWith("SOLELYKO")) {
 	  client.Messages.deleteMessage(e.message); 
 //	e.message.channel.sendMessage("```brainfuck\n" +finishdcode + "```");
 //	if (!finishdcode == "") {
@@ -467,7 +467,7 @@ if(e.message.content.startsWith("Tishko")) {
 //}
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   }
-    if(e.message.content.startsWith("TiShKo")) {
+    if(e.message.content.startsWith("SoLeLyKo")) {
 	  client.Messages.deleteMessage(e.message); 
     e.message.channel.sendMessage(e.message.author.nickMention + "```The word you just tried to use is blacklisted```");
   fQ0KICAgICAgaWYoZS5tZXNzYWdlLmNvbnRlbnQuc3RhcnRzV2l0aCgiaHR0cHM6Ly9kaXNjb3JkLm1lLyIpKSB7DQoJICBjbGllbnQuTWVzc2FnZXMuZGVsZXRlTWVzc2FnZShlLm1lc3NhZ2UpOyANCiAgICBlLm1lc3NhZ2UuY2hhbm5lbC5zZW5kTWVzc2FnZShlLm1lc3NhZ2UuYXV0aG9yLm5pY2tNZW50aW9uICsgImBgYE5PIEFEVkVSVElTSU5HYGBgIik7DQogIH0NCiAgICAgIGlmKGUubWVzc2FnZS5jb250ZW50LnN0YXJ0c1dpdGgoImh0dHBzOi8vd3d3LmRpc2NvcmQubWUiKSkgew0KCSAgY2xpZW50Lk1lc3NhZ2VzLmRlbGV0ZU1lc3NhZ2UoZS5tZXNzYWdlKTsgDQogICAgZS5tZXNzYWdlLmNoYW5uZWwuc2VuZE1lc3NhZ2UoZS5tZXNzYWdlLmF1dGhvci5uaWNrTWVudGlvbiArICJgYGBOTyBBRFZFUlRJU0lOR2BgYCIpOw0KICB9DQogICAgICAgIGlmKGUubWVzc2FnZS5jb250ZW50LnN0YXJ0c1dpdGgoImRpc2NvcmQuZ2ciKSkgew0KCSAgY2xpZW50Lk1lc3NhZ2VzLmRlbGV0ZU1lc3NhZ2UoZS5tZXNzYWdlKTsgDQogICAgZS5tZXNzYWdlLmNoYW5uZWwuc2VuZE1lc3NhZ2UoZS5tZXNzYWdlLmF1dGhvci5uaWNrTWVudGlvbiArICJgYGBOTyBBRFZFUlRJU0lOR2BgYCIpOw0KICB9DQogICAgICAgICAgaWYoZS5tZXNzYWdlLmNvbnRlbnQuc3RhcnRzV2l0aCgiZGlzY29yZC5tZSIpKSB7DQoJICBjbGllbnQuTWVzc2FnZXMuZGVsZXRlTWVzc2FnZShlLm1lc3NhZ2UpOyANCiAgICBlLm1lc3NhZ2UuY2hhbm5lbC5zZW5kTWVzc2FnZShlLm1lc3NhZ2UuYXV0aG9yLm5pY2tNZW50aW9uICsgImBgYE5PIEFEVkVSVElTSU5HYGBgIik7DQogIH0=
