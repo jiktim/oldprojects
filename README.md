@@ -24,11 +24,6 @@ Projects that primarily interacted with the Discord API.
 - JikPizza
 - Megumin
 - Nep
-- sol-bot
-- solely-Bot
-- sol-Hibiki
-- sol-Megumin
-- sol-Ram
 
 ### Libraries & Utilities
 
@@ -61,10 +56,14 @@ Projects that mostly focus on web interfaces or websites.
 - voteresolved
 - words@jik
 
+### External Sources
+
+Some projects in here have been redirected to a different source.
+
+- solely's bots: [solely-archive](https://github.com/solely-archive)
+
 ### Lost Projects
 
 Projects that have been lost or misplaced.
 
 - tBot
-- Sol-Nep
-- Sol-Nadeshiko
